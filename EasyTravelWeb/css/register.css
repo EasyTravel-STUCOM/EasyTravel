@@ -1,0 +1,190 @@
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+
+img{
+    max-width: 100%;
+}
+
+body{
+    background-image: url(../img/mountain.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #F6F6F6;
+}
+form{
+    text-align: center;
+    background-color: rgba(255, 250, 250, 0.5);
+    padding: 1rem;
+}
+
+.contenedor{
+    margin:5rem auto ;
+    width: 85rem;
+    height: 65rem;      
+}
+
+
+
+.titulo, .titulo2{
+    font-family: 'Satisfy', cursive;
+}
+
+.titulo{
+    font-size: 20px;
+    padding-top: 1rem;
+}
+.bold{
+    font-weight: bold;
+}
+
+.titulo2{
+    font-size: 18px;
+    margin-top: -1rem;
+   
+}
+
+.texto{
+    font-family: 'Nunito', sans-serif; 
+    color: #F9670D;
+    font-size: 15px;
+    
+    
+}
+
+.userIcon{
+    width: 10px;
+}
+
+.campo{
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px; 
+    margin-top: 4rem;
+}
+
+
+
+.enviar{
+    padding-top: 4rem;
+    padding-left: 30rem;
+}
+
+.begin:hover{
+    cursor: pointer;
+}
+
+.atras:hover{
+    cursor: pointer;
+}
+
+.submit:enabled{
+    cursor: pointer;
+}
+
+.submit{
+    font-family: 'Nunito', sans-serif; 
+    background-color: #FB9E65;
+    color: #FFFFFF;
+    border-color: #F9670D;
+    font-size: 28px;
+    border-radius: 5px;
+}
+
+label{
+    color: #393939;
+    font-size: 11px;
+}
+
+span{
+    color: #838383;
+}
+
+.primero{
+    margin-left: -5rem;
+}
+.tercero{
+    margin-right: 0rem;
+}
+
+.text-birthday{
+    margin-left: 2rem;
+}
+
+.contenedor-atras-siguiente{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    margin-top: -3rem;
+}
+
+.begin{
+  font-family: 'Nunito', sans-serif; 
+  background-color: #FFFFFF;
+  color: #FB9E65;
+  border-color: #FB9E65;
+  font-size: 28px;
+  border-radius: 5px;
+}
+
+.grid-checkbox{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(5,1fr);
+    row-gap: 3rem;
+    margin-left: 20rem;
+    margin-top: 5rem;
+    justify-items: start;
+}
+
+
+
+label{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: black;
+}
+
+.contenedor-atras-siguiente-2{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    margin-top:6rem;
+}
+
+#addInterest{
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif; 
+}
+
+#introduceHere{
+    font-size: 11px;
+    font-family: 'Nunito', sans-serif; 
+}
+
+.cookies {
+    width: 100%;
+    background-color: #157998;
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    justify-items: center;
+    padding: 0.5rem;
+}
+
+.cookies_p {
+    text-align: center;
+}
+
+
+.cookies_aceptarRechazar button{
+    background-color: rgb(248, 235, 235);
+    border: 1px solid black;
+    color: black;
+    margin-top: 0.5rem;
+    padding: 0.1rem;
+}
