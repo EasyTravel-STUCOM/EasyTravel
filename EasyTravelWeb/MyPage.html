@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/MyPage.css">
+    <title>MyPage</title>
+</head>
+
+<body>
+    <header class="encabezado">
+        <div class="encabezado__img"><img src="img/hamburger menu.png" alt=""></div>
+        <div class="encabezado__titulo">
+            <h1>Easy Travel</h1>
+        </div>
+        <div class="encabezado__idiomas">
+            <div class="encabezado__idiomas--select">
+                <select name="idiomas">
+                    <option value="Ingles">English</option>
+                    <option value="Español">Español</option>
+                </select>
+            </div>
+            <div class="encabezado__idiomas--logo">
+                <img src="img/españaIdioma.png" alt="">
+            </div>
+        </div>
+    </header>
+    <div class="navegacion">
+        <div class="colores">
+            <div class="colores__icono">
+                <div class="colores__icono--naranja"></div>
+                <div class="colores__icono--celeste"></div>
+            </div>
+            <div class="colores__texto">
+                <p>Cambia a modo daltónico</p>
+            </div>
+        </div>
+
+        <div>
+            <a href="#">Cerrar sesión</a>
+        </div>
+    </div>
+    <div class="fotoPerfil">
+        <img class="fotoPerfil__img" src="img/userGrey.png" alt="">
+        <br>
+        <a href="#">Cambiar contraseña</a>
+    </div>
+
+    <main class="principal">
+        <aside class="menu">
+            <button>Mis datos</button>
+            <button>Mis viajes</button>
+            <button>Soporte</button>
+        </aside>
+        <div class="ventana">
+            <div class="ventana__misDatos">
+                <form action="" method="POST">
+                    <!-- Nombre y apellido -->
+                    <div class="nombreApellidos">
+                        <h4>Nombre y apellidos:</h4> <br>
+                        <label for="nombre"><img src="img/user icon.svg" alt=""></label>
+                        <input type="text" name="" id="nombre" placeholder="Nombre">
+                        <input type="text" name="" placeholder="Apellido 1">
+                        <input type="text" name="" placeholder="Apellido 2">
+                    </div>
+
+                    <div class="tarjeta">
+                        <h4>Método de pago</h4>
+                        <img src="img/credit-card-solid.svg" alt="" class="tarjeta__imagen">
+                        <p class="tarjeta__nombre">Visa dePedro Alvarez García</p>
+                        <button class="tarjeta__modificar">Modificar</button>
+                    </div>
+
+                    <div class="intereses">
+                        <h4>Intereses:</h4>
+                        <p class="intereses__nombre">Gastronomía, Arte..</p>
+                        <button class="intereses__modificar">Modificar</button>
+                    </div>
+
+                    <div class="afiliados">
+                        <h4>Código de afiliados:</h4>
+                        <p class="afiliados__codigo"><img src="img/copy.png" alt=""> 0038571893C</p>
+                    </div>
+                </form>
+            </div>
+            <div class="ventana__misViajes">
+
+            </div>
+            <div class="ventana__soporte">
+
+            </div>
+        </div>
+    </main>
+
+
+
+
+</body>
+
+</html>
