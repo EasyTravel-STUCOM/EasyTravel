@@ -4,19 +4,38 @@
     --opciones: #FCAE7F;
     --naranja: #FA7E32;
     --celeste: #32adfa82;
+    --titulo: 'Satisfy', 'sans-serif';
+    --menu: 'Quicksand', 'sans-serif';
+    --subtitulo: 'Nunito', 'sans-serif';
 }
 
 body {
     background-color: var(--primario);
 }
 
-.encabezado {
-    display: grid;
-    grid-template-columns: 1fr 3fr 0fr;
+li{
+    font-family: var(--menu);
 }
 
-.encabezado__idiomas--logo img {
-    width: 33px;
+h1{
+    font-family: var(--titulo);
+}
+
+h4{
+    font-family: var(--subtitulo);
+}
+
+.input {
+    border: 1px solid black;
+    background-color: var(--blanco);
+    box-shadow: none;
+    width: 12rem;
+    text-align: center;
+}
+
+.encabezado {
+    display: grid;
+    grid-template-columns: 1fr 8fr 0fr;
 }
 
 .encabezado__idiomas {
@@ -24,13 +43,18 @@ body {
 }
 
 .encabezado__idiomas--select {
-    margin-right: 0.5rem;
+    margin-right: 1rem;
+}
+
+
+.encabezado__idiomas--logo img {
+    width: 33px;
 }
 
 .navegacion {
     display: flex;
     justify-content: space-between;
-    padding: 4rem;
+    padding: 4rem 4rem 0 4rem;
 }
 
 .colores {
@@ -62,28 +86,145 @@ body {
     height: 1.5rem;
 }
 
-.fotoPerfil{
+.perfil {
     text-align: center;
-    background-color: black;
 }
 
-.fotoPerfil__img{
+.fotoPerfil {
+    text-align: center;
+    background-color: black;
+    width: 4rem;
+    border-radius: 50%;
+    height: 4rem;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.fotoPerfil__img {
+    margin-bottom: 1rem;
+}
+
+.fotoPerfil__img {
     width: 3rem;
 }
 
+.ventana {
+    display: grid;
+}
+
+.afiliados img:hover{
+    cursor: pointer;
+    background-color: #ccc;
+    transition: all 500ms;
+}
+
+@media (max-width: 950px) {
+
+
+}
+
+
 @media (min-width: 768px) {
-    .encabezado {
+    .principal {
         display: grid;
-        grid-template-columns: 1fr 8fr 0fr;
+        grid-template-columns: 2fr 5fr;
+        margin: 6rem;
     }
 
-    .encabezado__idiomas {
+    .menu {
+        background-color: var(--blanco);
+        height: 9rem;
+        box-shadow: .8px 7px 12px -14px var(--naranja);
+    }
+
+    .menu ul li {
+        padding-bottom: 1.5rem;
+        transition: all 240ms;
+    }
+
+    .menu ul li:hover {
+        cursor: pointer;
+        text-shadow: 1px 1px 1px #ccc;
+        text-decoration: bold;
+        transition: all 240ms;
+    }
+
+
+    .ventana {
+        border: 0.5px solid var(--opciones);
+        padding: 1rem;
+        background-color: var(--blanco);
+        height: auto;
+    }
+
+    .ventana__misDatos {
+        display: grid;
+        grid-template-rows: 3fr 2fr 1fr 1fr;
+        height: 32rem;
+    }
+
+    .nombreApellidos__grid {
+        display: grid;
+        grid-template-columns: 0fr 2fr 2fr 2fr;
+        gap: 0.3rem;
+    }
+
+    .nombreApellidos img {
+        width: 14px;
+        vertical-align: bottom;
+    }
+
+    .tarjeta {
+        margin-top: 3rem;
+    }
+
+    .tarjeta__grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr 44fr;
+        column-gap: 0.5rem;
+    }
+
+    .tarjeta__imagen {
+        width: 20px;
+        margin-top: 1.1rem;
+    }
+
+
+    .tarjeta__modificar {
+        height: 1.3rem;
+        margin-top: 1rem;
+    }
+
+    .intereses {
+        margin-top: 3rem;
+    }
+
+    .intereses__grid {
+        display: grid;
+        grid-template-columns: 1fr 5fr 50fr;
+        gap: 1rem;
+    }
+
+    .intereses__modificar {
+        height: 1.3rem;
+        margin-top: 1rem;
+        width: 5rem;
+    }
+
+    .afiliados img {
+        width: 12px;
+        margin-left: 4px;
+    }
+
+    
+
+    .afiliados div {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .guardar {
         display: flex;
+        flex-direction: row-reverse;
     }
-
-    .encabezado__idiomas--select {
-        margin-right: 1rem;
-    }
-
-
 }

@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/MyPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand:wght@300&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Satisfy&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Quicksand&family=Satisfy&display=swap" rel="stylesheet">
     <title>MyPage</title>
 </head>
 
@@ -39,20 +44,25 @@
         </div>
 
         <div>
-            <a href="#">Cerrar sesión</a>
+            <a href="#" style="text-decoration: none;">Cerrar sesión</a>
         </div>
     </div>
-    <div class="fotoPerfil">
-        <img class="fotoPerfil__img" src="img/userGrey.png" alt="">
-        <br>
-        <a href="#">Cambiar contraseña</a>
+    <div class="perfil">
+        <div class="fotoPerfil">
+            <img class="fotoPerfil__img" src="img/userGrey.png" alt="">
+            <br>
+            <a href="#" style="text-decoration: none;">Cambiar contraseña</a>
+        </div>
     </div>
 
     <main class="principal">
         <aside class="menu">
-            <button>Mis datos</button>
-            <button>Mis viajes</button>
-            <button>Soporte</button>
+            <ul style="list-style: none;">
+                <li>Mis datos</li>
+                <li>Mis viajes</li>
+                <li>Soporte</li>
+            </ul>
+
         </aside>
         <div class="ventana">
             <div class="ventana__misDatos">
@@ -60,28 +70,43 @@
                     <!-- Nombre y apellido -->
                     <div class="nombreApellidos">
                         <h4>Nombre y apellidos:</h4> <br>
-                        <label for="nombre"><img src="img/user icon.svg" alt=""></label>
-                        <input type="text" name="" id="nombre" placeholder="Nombre">
-                        <input type="text" name="" placeholder="Apellido 1">
-                        <input type="text" name="" placeholder="Apellido 2">
+                        <div class="nombreApellidos__grid">
+                            <label for="nombre"><img src="img/user icon.svg" alt=""></label>
+                            <input type="text" name="" id="nombre" placeholder="Nombre">
+                            <input type="text" name="" placeholder="Apellido 1">
+                            <input type="text" name="" placeholder="Apellido 2">
+                        </div>
+
                     </div>
 
                     <div class="tarjeta">
                         <h4>Método de pago</h4>
-                        <img src="img/credit-card-solid.svg" alt="" class="tarjeta__imagen">
-                        <p class="tarjeta__nombre">Visa dePedro Alvarez García</p>
-                        <button class="tarjeta__modificar">Modificar</button>
+                        <div class="tarjeta__grid">
+                            <img src="img/credit-card-solid.svg" alt="" class="tarjeta__imagen">
+                            <p class="input">Visa de Pedro Alvarez García</p>
+                            <button class="tarjeta__modificar">Modificar</button>
+                        </div>
+
                     </div>
 
                     <div class="intereses">
                         <h4>Intereses:</h4>
-                        <p class="intereses__nombre">Gastronomía, Arte..</p>
-                        <button class="intereses__modificar">Modificar</button>
+                        <div class="intereses__grid">
+                            <p class="input">Gastronomía, Arte..</p>
+                            <button class="intereses__modificar">Modificar</button>
+                        </div>
+
                     </div>
 
                     <div class="afiliados">
                         <h4>Código de afiliados:</h4>
-                        <p class="afiliados__codigo"><img src="img/copy.png" alt=""> 0038571893C</p>
+                        <div>
+                            <p class="input" style="width: 7rem;">0038571893C<img src="img/copy.png" alt=""> </p>
+                        </div>
+                    </div>
+
+                    <div class="guardar">
+                        <button>Guardar</button>
                     </div>
                 </form>
             </div>
