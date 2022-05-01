@@ -128,7 +128,7 @@ h4{
     .principal {
         display: grid;
         grid-template-columns: 2fr 5fr;
-        margin: 6rem;
+        margin: 2rem 6rem 1rem 6rem;
     }
 
     .menu {
