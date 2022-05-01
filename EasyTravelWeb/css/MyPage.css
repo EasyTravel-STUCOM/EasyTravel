@@ -160,7 +160,7 @@ h4{
     .ventana__misDatos {
         display: grid;
         grid-template-rows: 3fr 2fr 1fr 1fr;
-        height: 32rem;
+        height: 33rem;
     }
 
     .nombreApellidos__grid {
