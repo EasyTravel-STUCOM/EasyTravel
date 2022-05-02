@@ -74,15 +74,15 @@
 
         <div class="ventana">
             <div class="ventana__misDatos">
-                <form action="" method="POST">
+                
                     <!-- Nombre y apellido -->
                     <div class="nombreApellidos">
                         <h4>Nombre y apellidos:</h4> <br>
                         <div class="nombreApellidos__grid">
                             <label for="nombre"><img src="img/user icon.svg" alt=""></label>
                             <input type="text" name="" id="nombre" placeholder="Nombre">
-                            <input type="text" name="" placeholder="Apellido 1">
-                            <input type="text" name="" placeholder="Apellido 2">
+                            <input type="text" name="" id="apellido1" placeholder="Apellido 1">
+                            <input type="text" name="" id="apellido2" placeholder="Apellido 2">
                         </div>
 
                     </div>
@@ -91,8 +91,12 @@
                         <h4>Método de pago</h4>
                         <div class="tarjeta__grid">
                             <img src="img/credit-card-solid.svg" alt="" class="tarjeta__imagen">
-                            <p class="input">Visa de Pedro Alvarez García</p>
-                            <button class="tarjeta__modificar">Modificar</button>
+                            <div>
+                                <p class="input tarjeta__texto">Visa de Pedro Alvarez García</p>
+                            </div>
+                            <div>
+                                <button class="tarjeta__modificar">Modificar</button>
+                            </div>
                         </div>
 
                     </div>
@@ -116,7 +120,7 @@
                     <div class="guardar">
                         <button>Guardar</button>
                     </div>
-                </form>
+
             </div>
             <div class="ventana__misViajes">
 
