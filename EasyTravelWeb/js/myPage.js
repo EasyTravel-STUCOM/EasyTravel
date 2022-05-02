@@ -106,12 +106,8 @@ $(".guardar").click(function () {
 });
 
 
-function copyToClipBoard() {
-
-    var content = document.getElementById('textArea');
-
-    content.select();
-    document.execCommand('copy');
-
-    alert("Copied!");
-}
+$(".tarjeta__modificar").click(function () {
+    $(".tarjeta__modificar").append(".tarjeta__ventana");
+    document.getElementsByClassName("tarjeta__ventana").style.display = "block";
+    
+})
