@@ -9,19 +9,21 @@
     --subtitulo: 'Nunito', 'sans-serif';
 }
 
+
 body {
     background-color: var(--primario);
 }
 
-li{
+li {
     font-family: var(--menu);
 }
 
-h1{
+h1 {
     font-family: var(--titulo);
+    line-height: 13px;
 }
 
-h4{
+h4 {
     font-family: var(--subtitulo);
 }
 
@@ -112,19 +114,133 @@ h4{
     display: grid;
 }
 
-.afiliados img:hover{
+.afiliados img:hover {
     cursor: pointer;
     background-color: #ccc;
     transition: all 500ms;
 }
 
+.nombreApellidos img {
+    width: 14px;
+}
+
+.afiliados img {
+    width: 12px;
+}
+
+.tarjeta__imagen {
+    width: 20px;
+}
+
 @media (max-width: 950px) {
 
+    .principal{
+        margin: 55px;
+    }
+
+    .navegacion {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 1rem 0px 1rem;
+    }
+
+    .colores__texto {
+        display: none;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .menu__flex {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        background: var(--blanco);
+        border-bottom: 1px solid var(--opciones);
+    }
+
+    .menu__flex a {
+        text-decoration: none;
+        font-family: var(--menu);
+        color: black;
+        transition: all 250ms;
+
+    }
+
+    .menu__flex a:hover {
+        font-style: bold;
+        font-family: var(--menu);
+        color: black;
+        transition: all 250ms;
+        text-shadow: 1px 2px 2px #ccc;
+    }
+
+    .ventana {
+        padding: 1rem 1rem 1rem 0;
+        background-color: var(--blanco);
+        border-top: none;
+        border: 1px solid var(--opciones);
+        box-shadow: -1px 2px 5px -1px var(--opciones);;
+    }
+
+    .ventana__misDatos{
+        margin: 1rem;
+    }
+
+    .nombreApellidos__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 7px;
+    }
+
+    .nombreApellidos__grid label:first-child {
+        display: none;
+    }
+
+    .tarjeta__grid{
+        display: grid;
+        grid-template-columns: 0fr 0fr 0fr;
+        gap: 10px;
+    }
+
+    .tarjeta__grid img{
+        margin-top: 18px;
+    }
+
+    .tarjeta__grid button{
+        height: 21px;
+        margin-top: 16px;
+
+    }
+
+    .intereses__grid{
+        display: grid;
+        grid-template-columns: 0fr 0fr;
+        gap: 10px;
+    }
+
+    .intereses__grid button{
+        height: 21px;
+        margin-top: 16px;
+    }
+
+    .guardar{
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row-reverse;
+    }
 
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 950px) {
+    .menu__flex {
+        display: none;
+    }
+
     .principal {
         display: grid;
         grid-template-columns: 2fr 5fr;
@@ -216,7 +332,7 @@ h4{
         margin-left: 4px;
     }
 
-    
+
 
     .afiliados div {
         display: grid;
