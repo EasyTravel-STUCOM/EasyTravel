@@ -305,7 +305,6 @@ $(".tarjeta__guardar").click(function () {
 
 
     } else {
-
         $.ajax({
             type: "POST",
             url: "http://localhost/EasyTravel/EasyTravelWeb/php/ModifyCard.php",
@@ -314,6 +313,7 @@ $(".tarjeta__guardar").click(function () {
             success: function (respJSON) {
                 if (respJSON.changed == true) {
                     console.log("Datos actualizados");
+                    $(".tarjeta__texto").html("Visa de "+nombreT) 
                 } else {
                     alert("Error en guardar tarjeta.");
 

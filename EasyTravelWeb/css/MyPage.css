@@ -526,9 +526,6 @@ h4 {
         vertical-align: bottom;
     }
 
-    .tarjeta {
-        margin-top: 3rem;
-    }
 
     .tarjeta__grid {
         display: grid;
@@ -547,9 +544,6 @@ h4 {
         margin-top: 1rem;
     }
 
-    .intereses {
-        margin-top: 3rem;
-    }
 
     .intereses__grid {
         display: grid;
