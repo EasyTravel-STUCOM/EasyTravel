@@ -2,7 +2,7 @@
 session_start();
 try {
     $user = "root";
-    $password = "nintendo55";
+    $password = "";
     $dbName = "mysql:host=localhost;dbname=EasyTravel";
     $PDO = new PDO($dbName, $user, $password);
 } catch (PDOException $e) {
@@ -15,7 +15,7 @@ $_SESSION['user']['surname2'] = "x";
 $_SERVER['user']['changed'] = false;
 
 
-$_SESSION['user']['id'] = 1;
+$_SESSION['user']['id'] = 5;
 
 
 
