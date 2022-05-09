@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/myPage.js" defer></script>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="js/jquery-validation-1.19.3/dist/additional-methods.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/MyPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Quicksand&family=Satisfy&display=swap"
+        rel="stylesheet">
+    <title>MyPage</title>
+
+</head>
+
+<body>
+    <header class="encabezado">
+        <div class="encabezado__img"><img src="img/hamburger menu.png" alt=""></div>
+        <div class="encabezado__titulo">
+            <h1>EASY TRAVEL</h1>
+        </div>
+        <div class="encabezado__idiomas">
+            <div class="encabezado__idiomas--select">
+                <select name="idiomas">
+                    <option value="Ingles">English</option>
+                    <option value="Español">Español</option>
+                </select>
+            </div>
+            <div class="encabezado__idiomas--logo">
+                <img src="img/españaIdioma.png" alt="">
+            </div>
+        </div>
+    </header>
+    <div class="navegacion">
+        <div class="colores">
+            <div class="colores__icono">
+                <div class="colores__icono--naranja"></div>
+                <div class="colores__icono--celeste"></div>
+            </div>
+            <div class="colores__texto">
+                <p>Cambia a modo daltónico</p>
+            </div>
+        </div>
+
+        <div>
+            <a href="#" style="text-decoration: none;">Cerrar sesión</a>
+        </div>
+    </div>
+    <div class="perfil">
+        <div class="fotoPerfil">
+            <img class="fotoPerfil__img" src="img/userGrey.png" alt="">
+            <br>
+            <a href="#" style="text-decoration: none;">Cambiar contraseña</a>
+        </div>
+    </div>
+
+    <main class="principal">
+        <aside class="menu">
+            <ul style="list-style: none;">
+                <li>Mis datos</li>
+                <li>Mis viajes</li>
+                <li>Soporte</li>
+            </ul>
+
+        </aside>
+
+        <div class="menu__flex">
+            <a href="#">Mis datos</a>
+            <a href="#">Mis viajes</a>
+            <a href="#">Soporte</a>
+        </div>
+
+        <div class="ventana">
+            <div class="ventana__misDatos">
+
+                <!-- Nombre y apellido -->
+                <div class="nombreApellidos">
+                    <h4>Nombre y apellidos:</h4> <br>
+                    <div class="nombreApellidos__grid">
+                        <label for="nombre"><img src="img/user icon.svg" alt=""></label>
+                        <input type="text" name="" id="nombre" placeholder="Nombre">
+                        <input type="text" name="" id="apellido1" placeholder="Apellido 1">
+                        <input type="text" name="" id="apellido2" placeholder="Apellido 2">
+                    </div>
+
+                </div>
+
+                <div class="tarjeta">
+                    <h4>Método de pago</h4>
+                    <div class="tarjeta__grid">
+                        <img src="img/credit-card-solid.svg" alt="" class="tarjeta__imagen">
+                        <div>
+                            <p class="input tarjeta__texto">Visa de Pedro Alvarez García</p>
+                        </div>
+                        <div>
+                            <button class="tarjeta__modificar">Modificar</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="intereses">
+                    <h4>Intereses:</h4>
+                    <div class="intereses__grid">
+                        <p class="input">Gastronomía, Arte..</p>
+                        <button class="intereses__modificar">Modificar</button>
+                    </div>
+
+                </div>
+
+                <div class="afiliados">
+                    <h4>Código de afiliados:</h4>
+                    <div>
+                        <p class="input" style="width: 7rem;">0038571893C<img src="img/copy.png" alt=""> </p>
+                    </div>
+                </div>
+
+                <div class="guardar">
+                    <button>Guardar</button>
+                </div>
+
+            </div>
+            <div class="ventana__misViajes">
+
+            </div>
+            <div class="ventana__soporte">
+
+            </div>
+        </div>
+    </main>
+
+    <div class="tarjeta__ventana">
+
+
+        <div>
+            <label for="tarjeta__nombre">Nombre y apellidos</label>
+            <input type="text" name="tarjeta__nombre" id="tarjeta__nombre">
+        </div>
+
+        <div>
+            <label for="tarjeta__numero">Número de tarjeta</label>
+            <input type="text" name="tarjeta__numero" id="tarjeta__numero">
+
+        </div>
+
+        <div>
+            <label for="tarjeta__CV">CV de tarjeta</label>
+            <input type="text"  name="" id="tarjeta__CV">
+        </div>
+
+
+        <div>
+            <label for="tarjeta__fecha">Fecha validez</label>
+            <input type="month" name="tarjeta__fecha" id="tarjeta__fecha">
+        </div>
+
+        <div>
+            <button class="tarjeta__guardar">Actualizar tarjeta</button>
+        </div>
+
+        <div>
+            <button class="tarjeta__cerrar">Cerrar pestaña</button>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
