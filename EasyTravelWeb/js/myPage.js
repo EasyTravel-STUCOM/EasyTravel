@@ -20,7 +20,6 @@ $(".guardar").click(function () {
                         console.log("Datos actualizados");
                     } else {
                         console.log("Error en la actualización de datos.");
-
                     }
                 }
             })
@@ -344,3 +343,23 @@ function isDigit(string) {
 
     return digit;
 }
+
+
+$('.changePWD').click(function() {
+    let pwd = prompt("Pon una contraseña");
+    let pwdConfirm = prompt("Repite la contraseá");
+    if(pwd == pwdConfirm){
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/EasyTravel/EasyTravelWeb/php/changePWD.php",
+            data: "pwd="+pwd,
+            dataType: "json",
+            success: function (respJSON) {
+                
+                    console.log(respJSON.idUsuario);
+               
+                
+            }
+        })
+    }
+})
