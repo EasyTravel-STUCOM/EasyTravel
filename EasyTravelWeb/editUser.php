@@ -16,20 +16,32 @@
     if(isset($_POST['cacelButton'])){
         header("Location: adminView.php"); 
     }
-    if(isset($_POST['modifyButton'])){
-        $modify = $dbh->prepare("UPDATE usuario where idUsuario = :id SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, 
-        fechaDeNacimiento = :fechaDeNacimiento, telefono = :telefono, mail = :mail, nombreUsuario = :nombreUsuario, rol = :rol"); 
+    if(isset($_POST['ModifyButton'])){
+        $id = $_GET['id']; 
+
+        $nombre = $_POST['name']; 
+        $apellido1 = $_POST['apellido1'];
+        $apellido2 = $_POST['apellido2'];
+        $fechaDeNacimiento = $_POST['fechaDeNacimiento'];
+        $telefono = $_POST['telefono'];
+        $mail = $_POST['email'];
+        $nombreUsuario = $_POST['nombreUsuario'];
+        $rol = $_POST['rol'];
+        $modify = $dbh->prepare("UPDATE usuario  SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, 
+        fechaDeNacimiento = :fechaDeNacimiento, telefono = :telefono, mail = :mail, nombreUsuario = :nombreUsuario, rol = :rol WHERE idUsuario = :id" ); 
         $modify->execute(array(
-            ":id" => $_GET['id'], 
-            ":nombre" => $_POST['name'], 
-            ":apellido1" => $_POST['apellido1'], 
-            ":apellido2" => $_POST['apellido2'], 
-            ":fechaDeNacimiento"=> $_POST['fechaDeNacimiento'], 
-            ":telefono"=> $_POST['telefono'], 
-            ":mail"=> $_POST['email'], 
-            ":nombreUsuario"=>$_POST['nombreUsuario'], 
-            ":rol"=>$_POST['rol']
+            ":id" => $id, 
+            ":nombre" =>$nombre, 
+            ":apellido1" => $apellido1 , 
+            ":apellido2" => $apellido2, 
+            ":fechaDeNacimiento"=>$fechaDeNacimiento , 
+            ":telefono"=> $telefono, 
+            ":mail"=> $mail, 
+            ":nombreUsuario"=>$nombreUsuario, 
+            ":rol"=>$rol 
+
         ));
+        header("Refresh:0");
     }
 ?> 
 
@@ -42,7 +54,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method='POST'>
+    <form method='POST' >
         <label>id: <?php echo $usuarios[0]['idUsuario'] ?> </label>
         <br>
         <label>nombre: </label>
@@ -70,8 +82,8 @@
         <input type="text" name="rol" id="rol" value= <?php echo $usuarios[0]['rol'] ?> >
         <br>
         <br>
-        <input type="submit" value="Cancel" id='cancelButton'>
-        <input type="submit" value="Modify" id='ModifyButton'>
+        <input type="submit" value="Cancel" name='cancelButton'>
+        <input type="submit" value="Modify" name='ModifyButton'>
     </form> 
 </body>
 </html>

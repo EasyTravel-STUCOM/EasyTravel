@@ -1,3 +1,14 @@
+<?php 
+    session_start();
+    if(isset($_POST['siguiente'])){
+    $password = $_POST['confirmPassword'];
+    $_SESSION['userToAdd']['nombreUsuario'] = $_POST['name']; 
+    $_SESSION['userToAdd']['password'] = password_hash($password,PASSWORD_DEFAULT); 
+    }
+    
+
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 

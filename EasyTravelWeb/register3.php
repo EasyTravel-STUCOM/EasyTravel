@@ -1,10 +1,42 @@
 <?php
+session_start();
+try {
+    $user = "root";
+    $password = "Supercarlos1";
+    $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
+    $dbh = new PDO($dataName, $user, $password);
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+
 if (isset($_POST["siguiente"])) {
     header("Location: index.html");
 } else if (isset($_POST["atras"])) {
     header("Location: register2.php");
 }
+$interest = $_POST['arte'];
 
+if(isset($_POST['siguiente'])){
+    $interestId;
+    foreach($interest as $i){
+        switch($i){
+            case "arte": $intereses[]=1; break;
+            case "nightLife": $intereses[]=2;break;
+            case "rural": $intereses[]=3;break;
+            case "tecnologia": $intereses[]=4;break;
+            case "eventos": $intereses[]=5;break;
+            case "ocio": $intereses[]=6;break;
+            case "gastronomia": $intereses[]=7;break;
+            case "naturaleza": $intereses[]=8;break;
+            case "cultura": $intereses[]=9;break;
+            case "deporte": $intereses[]=10;break;
+        }
+    }
+    foreach($interestId as $i){
+
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,45 +80,45 @@ if (isset($_POST["siguiente"])) {
             <div class="grid-checkbox">
 
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="arte">
                     <label for="arte">ARTE</label>
                 </div>
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="ocio">
                     <label for="arte">OCIO</label>
                 </div>
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="nightLife">
                     <label for="arte">NIGHT LIFE</label>
                 </div>
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="gastronomia">
                     <label for="arte">GASTRONOMIA</label>
                 </div>
 
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="rural">
                     <label for="arte">RURAL</label>
                 </div>
 
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="naturaleza">
                     <label for="arte">NATURALEZA</label>
                 </div>
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="tecnologia">
                     <label for="arte">TECNOLOGIA</label>
                 </div>
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="cultura">
                     <label for="arte">CULTURA</label>
                 </div>
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="eventos">
                     <label for="arte">EVENTOS</label>
                 </div>
                 <div class="check">
-                    <input type="checkbox" class="check" name="arte[]" id="arte">
+                    <input type="checkbox" class="check" name="intereses[]" id="arte" value="deporte">
                     <label for="arte">DEPORTE</label>
                 </div>
             </div>
