@@ -16,7 +16,11 @@ $stmt->bindValue(':user', "mullayos");
 $stmt->bindValue(':pwd', $pwd);
 $stmt->execute();
 
+$stmt = $PDO->prepare("SELECT userPassword FROM Usuario WHERE nombreUsuario = :user");
+$stmt->bindValue(':user', "mullayos");
+$stmt->execute();
 
-$result = $stmt -> fetch(PDO::FETCH_ASSOC);
-var_dump($result);
-echo json_encode($result);
+
+$result['pwd'] = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+echo json_encode($result['pwd']);

@@ -7,34 +7,34 @@ $('.login').click(function () {
     $(".login-register").animate({
         opacity: 0
     }, 300, function () {
-        $('.login').hide(); // applies display: none; to the element .panel
-        $('.login-register').html(
-            "<form class='signInForm'method='POST'><input class='username' name='username' type='text' placeholder='Inserta tu nombre de usuario'/>&nbsp;<input class='password' name='password' type='password' placeholder='Inserta tu contraseña'/><br><button class='submitButton'>Iniciar Sesión</button></form>"
-        );
+        $('.login').hide();
+        $('.register').hide();
+        $('p').hide(); // applies display: none; to the element .panel
+        $('.login-register').append(document.getElementsByClassName("log"));
+        $(".log").css({"display":"inline-block"});
+        $(".log input").css({"margin-bottom":"4px"});
         $('.login-register').animate({
             opacity: 1
-        }), 300, function () {
+        }), 300/*, function () {
             $('.login-register').show()
-        }
+        }*/
     });
 });
 
-$('.submitButton').click(function () {
-    let user = $('.username').val();
-    let pwd = $('.password').val();
+$('#logIn').click(function () {
+    let user = $('.userName').val();
+    let pwd = $('.userPWD').val();
+    console.log(pwd);
+
 
     if (user.length != 0 && pwd.length != 0) {
         $.ajax({
             type: "POST",
             url: "http://localhost/EasyTravel/EasyTravelWeb/php/login.php",
-            data: "user=" + user +"&pwd="+pwd,
+            data: "user=" + user +"&pwd=" + pwd,
             dataType: "json",
             success: function (respJSON) {
-                if (respJSON.changed == true) {
-                    console.log("Datos actualizados");
-                } else {
-                    console.log("Error en la actualización de datos.");
-                }
+                console.log(respJSON)
             }
         })
     }
