@@ -49,7 +49,7 @@
                             echo"<td>".$row['nombreUsuario']."</td>";
                             echo"<td>".$row['rol']."</td>";
                             echo"<td><a href='editUser.php?id=$id'>Editar</a></td>";
-                            echo"<td><a href='removeUser.php?id='$id'>Eliminar</a></td>";
+                            echo"<td><a href='removeUser.php?id=$id'>Eliminar</a></td>";
                         echo"</tr>";
                         }
 

@@ -1,3 +1,33 @@
+<?php 
+    try {
+        $user = "root";
+        $password = "Supercarlos1";
+        $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
+        $dbh = new PDO($dataName, $user, $password);
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+
+    $stmtComprMail = "SELECT * FROM usuario WHERE mail = :email"; 
+    $compMail = $dbh -> prepare($stmtComprMail); 
+    $compMail->bindValue(":email",$_POST['mail']);
+    $compMail->execute();
+    $mails = $compMail->fetchAll(PDO::FETCH_ASSOC);
+
+    $mailRepetido; 
+    empty($mails)?$mailRepetido=true:$mailRepetido= false; 
+
+    session_start(); 
+    if(!isset($_SESSION) && isset($_POST['nextButton'])){
+        $_SESSION['userToAdd']['nombre'] = $_POST['name']; 
+        $_SESSION['userToAdd']['apellido1'] = $_POST['secondName']; 
+        $_SESSION['userToAdd']['apellido2'] = $_POST['thirdName']; 
+        $_SESSION['userToAdd']['fechaDeNacimiento'] = $_POST['birthday']; 
+        $_SESSION['userToAdd']['mail'] = $_POST['mail']; 
+
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,13 +81,19 @@
                 </div>
 
                 <div class="campo">
+                    <img src="img/user icon.svg" alt="user icon" class="userIcon tercero">
+                    <label for="mail" class="second-name">INSERTA TU CORREO ELECTRONICO:</label> <br>
+                    <input type="mail" name="mail" id="mail">
+                </div>
+
+                <div class="campo">
                     <img src="img/" alt="">
                     <label for="birthday" class="text-birthday">INSERTA TU FECHA DE NACIMIENTO:</label><br>
                     <input type="date" name="birthday" id="birthday">
                 </div>
 
                 <div class="enviar">
-                    <input class="submit "type="submit" name="" value="Siguiente">
+                    <input class="submit "type="submit" name="nextButton" value="Siguiente">
                 </div>
             </form>
         </div>
