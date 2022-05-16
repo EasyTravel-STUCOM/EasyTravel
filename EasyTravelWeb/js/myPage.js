@@ -20,7 +20,6 @@ $(".guardar").click(function () {
                         console.log("Datos actualizados");
                     } else {
                         console.log("Error en la actualización de datos.");
-
                     }
                 }
             })
@@ -175,7 +174,7 @@ $(".guardar").click(function () {
                     }
                 }
             })
-        }else{
+        } else {
             if (isDigit(apellido2) == true) {
                 alert("No pueden haber números en el segundo apellido")
             }
@@ -313,7 +312,7 @@ $(".tarjeta__guardar").click(function () {
             success: function (respJSON) {
                 if (respJSON.changed == true) {
                     console.log("Datos actualizados");
-                    $(".tarjeta__texto").html("Visa de "+nombreT) 
+                    $(".tarjeta__texto").html("Visa de " + nombreT)
                 } else {
                     alert("Error en guardar tarjeta.");
 
@@ -344,3 +343,33 @@ function isDigit(string) {
 
     return digit;
 }
+
+
+$('.changePWD').click(function () {
+    let pwd = prompt("Pon una contraseña");
+    let pwdConfirm = prompt("Repite la contraseá");
+    console.log(pwd);
+    if (pwd == pwdConfirm && pwd.length != 0 && pwdConfirm.length != 0) {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/EasyTravel/EasyTravelWeb/php/changePWD.php",
+            data: "pwd=" + pwd,
+            dataType: "json",
+            success: function (respJSON) {
+
+                console.log(respJSON.userPassword);
+                console.log("Bien");
+
+
+            }
+        })
+    }
+
+    if (pwd != pwdConfirm) {
+        alert("La contraseña no coincide");
+    }
+
+    if (pwd.length == 0 && pwdConfirm.length == 0) {
+        alert("No puedes dejar campos en vacío");
+    }
+})

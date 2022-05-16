@@ -16,3 +16,4 @@ $numero = $_POST['numero'];
 
 $stmt = $PDO->prepare("SELECT nombre FROM TARJETA WHERE numero = :numero");
 $stmt->bindValue(':numero',$numero);
+
