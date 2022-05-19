@@ -1,0 +1,127 @@
+/*FORMULARIO*/
+.contenedor{
+    max-width: 125rem;
+    margin: 0 auto 0 auto;
+}
+
+
+
+.formulario{
+    margin-top: 5rem;
+    width: 70rem;
+    font-family:'Nunito', sans-serif ;
+    font-size: 16px;
+    /*margin: 0 auto; /*con esta linea centramos el contenido*/
+
+}
+
+.formulario fieldset{
+    border: 1px solid black;
+    margin-bottom: 2rem;
+
+}
+
+.formulario legend{
+    background-color: #F9670D;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding: 1rem;
+    margin-bottom: 4rem;
+}
+
+.campo{
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.campo label{
+    flex-basis: 10rem;
+}
+
+
+.campo input:not([type="radio"]),
+.campo textarea,
+.campo select{
+    flex: 1;
+    border: 1px solid #e1e1e1;
+    padding: 1rem;
+}
+
+.send{
+    background-color: #F9670D;
+    display: block; /*Hace que un elemento coja todo lo ancho que haya disponible*/
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900; /*Le puede poner 900 porque he importado una fuente que me lo permite*/
+    padding: 1rem;
+    transition: background-color .3s ease-out;
+    text-align: center;
+    border: none;
+}
+.send:hover{
+    background-color: #a84f18;
+    cursor: pointer;
+}
+
+h1{
+    margin-top: 5rem;
+    font-size: 4rem;
+    font-family: 'QuickSand';
+}
+
+p{
+    font-size: 25px;
+    font-family: 'Nunito';
+}
+
+.flex-contactUs{
+    display: inline-flex;
+   
+}
+
+.elemento1{
+    
+}
+
+/*FOOTER*/
+
+.site-footer{
+    background-color: #2ebed7;
+    margin-top: 5rem;
+    padding-top: 5rem;
+}
+.site-footer h3{
+    font-family:'Nunito', sans-serif ;
+    color: #F9670D;
+    margin-bottom: .5rem;
+    font-size: 25px;
+    margin-bottom: 2rem;
+}
+
+.grid-footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    justify-items: center;
+}
+
+.footer-menu a{
+    display: block;
+    color: white;
+    font-size: 20px;
+}
+
+.copyright{
+    text-align: center;
+    margin-top: 5rem;
+    color: white;
+    
+}
+
+a{
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+}
