@@ -1,5 +1,6 @@
 <?php
 session_start();
+var_dump($_SESSION);
 try {
     $user = "root";
     $password = "Supercarlos1";
@@ -10,32 +11,72 @@ try {
 }
 
 
-if (isset($_POST["siguiente"])) {
-    header("Location: index.html");
-} else if (isset($_POST["atras"])) {
-    header("Location: register2.php");
-}
-$interest = $_POST['arte'];
+//metodo para insertar usuario
 
-if(isset($_POST['siguiente'])){
-    $interestId;
-    foreach($interest as $i){
-        switch($i){
-            case "arte": $intereses[]=1; break;
-            case "nightLife": $intereses[]=2;break;
-            case "rural": $intereses[]=3;break;
-            case "tecnologia": $intereses[]=4;break;
-            case "eventos": $intereses[]=5;break;
-            case "ocio": $intereses[]=6;break;
-            case "gastronomia": $intereses[]=7;break;
-            case "naturaleza": $intereses[]=8;break;
-            case "cultura": $intereses[]=9;break;
-            case "deporte": $intereses[]=10;break;
+
+if (isset($_POST['siguiente'])) {
+    $interest = $_POST['intereses'];
+
+    //inserta usuario
+    $insertUsuario = "INSERT INTO usuario(nombre,apellido1,apellido2,fechaDeNacimiento,mail,nombreUsuario,userPassword)
+    VALUES(:nombre,:apellido1,:apellido2,:fechaDeNacimiento,:mail,:nombreUsuario,:userPassword)";
+    $insert = $dbh->prepare($insertUsuario);
+    $insert->execute(array(
+        ":nombre" => $_SESSION['userToAdd']['nombre'],
+        ":apellido1" => $_SESSION['userToAdd']['apellido1'],
+        ":apellido2" => $_SESSION['userToAdd']['apellido2'],
+        ":fechaDeNacimiento" => $_SESSION['userToAdd']['fechaDeNacimiento'],
+        ":mail" => $_SESSION['userToAdd']['mail'],
+        ":nombreUsuario" => $_SESSION['userToAdd']['user'],
+        ":userPassword" => $_SESSION['userToAdd']['password']
+    ));
+
+    //insertamos usuario_interes
+    $stmtSearchUser = $dbh->prepare("SELECT idUsuario FROM usuario WHERE nombreUsuario = :nUsuario");
+    $stmtSearchUser->bindValue(":nUsuario", $_SESSION['userToAdd']['user']);
+    $stmtSearchUser->execute();
+    $newUser = $stmtSearchUser->fetchAll(PDO::FETCH_ASSOC);
+    $idNewUser = $newUser[0]['idUsuario'];
+
+    foreach ($interest as $i) {
+        switch ($i) {
+            case "arte":
+                $intereses[] = 1;
+                break;
+            case "nightLife":
+                $intereses[] = 2;
+                break;
+            case "rural":
+                $intereses[] = 3;
+                break;
+            case "tecnologia":
+                $intereses[] = 4;
+                break;
+            case "eventos":
+                $intereses[] = 5;
+                break;
+            case "ocio":
+                $intereses[] = 6;
+                break;
+            case "gastronomia":
+                $intereses[] = 7;
+                break;
+            case "naturaleza":
+                $intereses[] = 8;
+                break;
+            case "cultura":
+                $intereses[] = 9;
+                break;
+            case "deporte":
+                $intereses[] = 10;
+                break;
         }
     }
-    foreach($interestId as $i){
-
+    foreach ($intereses as $i) {
+        $insertInteresesActividades = $dbh->prepare("INSERT INTO usuariointeres VALUES($i,$idNewUser)");
+        $insertInteresesActividades->execute();
     }
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -59,7 +100,7 @@ if(isset($_POST['siguiente'])){
 
 <body>
     <div class="contenedor">
-        <form  id="formCheck" method="POST">
+        <form id="formCheck" method="POST">
             <div class="titulo">
                 <h1>EASY TRAVEL</h1>
             </div>
@@ -76,7 +117,7 @@ if(isset($_POST['siguiente'])){
             <div class="span">
                 <span id="span" style="display:none">Selecciona por lo menos uno</span>
             </div>
-            
+
             <div class="grid-checkbox">
 
                 <div class="check">
@@ -141,4 +182,3 @@ if(isset($_POST['siguiente'])){
     </div>
 
 </body>
-

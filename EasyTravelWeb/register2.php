@@ -1,13 +1,37 @@
-<?php 
-    session_start();
-    if(isset($_POST['siguiente'])){
+<?php
+session_start();
+try {
+    $user = "root";
+    $password = "Supercarlos1";
+    $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
+    $dbh = new PDO($dataName, $user, $password);
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+//comprobamos que haya iniciado el proceso de registro
+if (!isset($_SESSION['userToAdd'])) {
+    header("Location: register.php");
+}
+var_dump($_SESSION);
+if (isset($_POST['siguiente'])) {
     $password = $_POST['confirmPassword'];
-    $_SESSION['userToAdd']['nombreUsuario'] = $_POST['name']; 
-    $_SESSION['userToAdd']['password'] = password_hash($password,PASSWORD_DEFAULT); 
+    $insert = $dbh->prepare("SELECT nombreUsuario FROM usuario WHERE nombreUsuario = :nomUsuario");
+    $insert->bindValue(":nomUsuario",$_POST['user']);
+    $insert->execute(); 
+    $nomUsuario = $insert->fetchAll(PDO::FETCH_ASSOC);
+    if(empty($nomUsuario)){
+        $_SESSION['userToAdd']['user'] = $_POST['user'];
+        $_SESSION['userToAdd']['password'] = password_hash($password, PASSWORD_DEFAULT);
+        header("Location: register3.php");
+    }else{
+        $_SESSION['error']['userRepeated']=true;
     }
     
+}
 
-    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +54,7 @@
 
 <body>
     <div class="contenedor">
-        <form action="register2.php" id="userFrom" method="POST">
+        <form id="userFrom" method="POST">
             <div class="titulo">
                 <h1>EASY TRAVEL</h1>
             </div>
@@ -48,6 +72,11 @@
                 <img src="img/user icon.svg" alt="user icon " class="userIcon primero">
                 <label for="name">INSERTA UN NOMBRE DE USUARIO:</label> <br>
                 <input type="text" name="user" id="name">
+                <?php 
+                    if(isset($_SESSION['error']['userRepeated']) && $_SESSION['error']['userRepeated']){
+                        echo "<h3>Nombre de usuario ya en uso</h3>";
+                    }
+                ?>
             </div>
 
             <div class="campo">
@@ -76,9 +105,7 @@
 </body>
 
 <?php
-if (isset($_POST["siguiente"])) {
-    header("Location: register3.php");
-} else if (isset($_POST['atras'])) {
-    header("Location: register.html");
+if (isset($_POST['atras'])) {
+    header("Location: register.php");
 }
 ?>
