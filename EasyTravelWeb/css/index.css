@@ -132,7 +132,9 @@ body{
     border-radius: 1rem;
 }
 .hero img{
-    width: 100%; 
+    width: 90%; 
+    border-radius:15px;
+    margin-left:5%;
 }
 
 /* jquery  */

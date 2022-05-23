@@ -1,8 +1,8 @@
 <?php
 session_start();
 try {
-    $user = "root";
-    $password = "Supercarlos1";
+    $user = "adminuser";
+    $password = "admin123";
     $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
     $dbh = new PDO($dataName, $user, $password);
 } catch (PDOException $e) {
