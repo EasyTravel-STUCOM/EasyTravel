@@ -32,11 +32,8 @@ if (isset($_POST['siguiente'])) {
 
     //insertamos usuario_interes
     $stmtSearchUser = $dbh->prepare("SELECT idUsuario FROM usuario WHERE nombreUsuario = :nUsuario");
-<<<<<<< HEAD
-    $stmtSearchUser->bindValue(":nUsuario", $_SESSION['user']['id']);
-=======
     $stmtSearchUser->bindValue(":nUsuario", $_SESSION['userToAdd']['user']);
->>>>>>> 83d0539803bfa55f201d06aa2168925000f53661
+
     $stmtSearchUser->execute();
     $newUser = $stmtSearchUser->fetchAll(PDO::FETCH_ASSOC);
     $idNewUser = $newUser[0]['idUsuario'];
