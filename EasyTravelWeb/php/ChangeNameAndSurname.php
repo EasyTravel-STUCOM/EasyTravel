@@ -1,23 +1,6 @@
 <?php
 session_start();
-try {
-    $user = "root";
-    $password = "";
-    $dbName = "mysql:host=localhost;dbname=EasyTravel";
-    $PDO = new PDO($dbName, $user, $password);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
-
-$_SESSION['user']['name'] = "x";
-$_SESSION['user']['surname1'] = "x";
-$_SESSION['user']['surname2'] = "x";
-$_SESSION['user']['changed'] = false;
-
-
-$_SESSION['user']['id'] = 5;
-
-
+include("pdo.php");
 
 if (isset($_POST['apellido2'])) {
     $stmt = $PDO->prepare("UPDATE Usuario SET apellido2 = :apellido2 WHERE idUsuario = :id");
