@@ -1,4 +1,4 @@
-CREATE DATABASE easytravelst2122;
+create DATABASE easytravelst2122;
 USE EasyTravelst2122;
 CREATE USER 'adminuser'@'localhost' IDENTIFIED BY 'admin123'; 
 GRANT ALL PRIVILEGES ON * . * to 'adminuser'@'localhost'; 

@@ -1,32 +1,29 @@
 <?php
+ try {
+    $user = "root";
+    $password = "Pokemon26!";
+    $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
+    $dbh = new PDO($dataName, $user, $password);
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
 if (isset($_POST["send"])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $message = $_POST["message"];
 
-    try {
-        $user = "root";
-        $password = "Pokemon26!";
-        $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
-        $dbh = new PDO($dataName, $user, $password);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-    $stmt = $dbh->prepare("INSERT INTO ContactUs(nombre,correo,mensaje)VALUES(:nombre, :correo, :mensaje");
+   
+    $insert_query= "INSERT INTO contactUs VALUES(:nombre,:correo,:mensaje)";
+    $stmt = $dbh->prepare($insert_query);
     $stmt->execute(array(
-        ":nombre" => $name,
+        ":nombre" =>$name,
         ":correo"=>$email,
         ":mensaje"=>$message
     ));
 
-    $insert_query = "INSERT INTO ContactUs(nombre,correo,mensaje)VALUES('$name','$email','$message')";
-    $resultado = $conexion_bbd->query($insert_query);
-    if ($resultado) {
-        echo "<br>";
-        echo "Mensaje enviado";
-    } else {
-        echo "Mensaje no enviado";
-    }
+    
+    
 }
 
 ?>
@@ -103,7 +100,7 @@ if (isset($_POST["send"])) {
                 </div>
 
                 <div class="elemento">
-                    <form class="formulario" method="POST" action="contactUs.php">
+                    <form class="formulario" method="POST">
                         <fieldset>
                             <legend class="nunito-20px">CONTACT US</legend>
 
@@ -124,6 +121,11 @@ if (isset($_POST["send"])) {
 
                         </fieldset>
                         <input type="submit" value="SEND" class="send nunito-20px" name="send">
+                        <?php 
+                        
+                            if (isset($_POST["send"])){
+                                echo "Mensaje enviado!";
+                        }?>
                     </form>
                 </div>
             </div>
