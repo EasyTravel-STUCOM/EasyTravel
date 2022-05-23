@@ -1,14 +1,8 @@
 <?php
 session_start();
 var_dump($_SESSION);
-try {
-    $user = "adminuser";
-    $password = "admin123";
-    $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
-    $dbh = new PDO($dataName, $user, $password);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
+include("php/pdo.php");
+
 
 
 //metodo para insertar usuario
@@ -32,7 +26,11 @@ if (isset($_POST['siguiente'])) {
 
     //insertamos usuario_interes
     $stmtSearchUser = $dbh->prepare("SELECT idUsuario FROM usuario WHERE nombreUsuario = :nUsuario");
+<<<<<<< HEAD
+    $stmtSearchUser->bindValue(":nUsuario", $_SESSION['user']['id']);
+=======
     $stmtSearchUser->bindValue(":nUsuario", $_SESSION['userToAdd']['user']);
+>>>>>>> 83d0539803bfa55f201d06aa2168925000f53661
     $stmtSearchUser->execute();
     $newUser = $stmtSearchUser->fetchAll(PDO::FETCH_ASSOC);
     $idNewUser = $newUser[0]['idUsuario'];

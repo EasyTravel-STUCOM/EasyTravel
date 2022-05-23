@@ -374,18 +374,23 @@ $('.changePWD').click(function () {
     }
 })
 
-$("#eliminar").click(function() {
-    $.ajax({
-        type: "POST",
-        url: "http://localhost/EasyTravel/EasyTravelWeb/php/deleteUser.php",
-        data: "pwd=" + pwd,
-        dataType: "json",
-        success: function (respJSON) {
+$("#eliminar").click(function () {
+    let confirmar = confirm("Estás seguro de querer eliminar la cuenta?");
 
-            console.log(respJSON.userPassword);
-            console.log("Bien");
+    if (confirmar) {
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/EasyTravel/EasyTravelWeb/php/deleteUser.php",
+            dataType: "json",
+            success: function (respJSON) {
+
+                console.log(respJSON);
+                alert("Eliminado correctamente");
 
 
-        }
-    })
+            }
+        })
+    }
+
 })

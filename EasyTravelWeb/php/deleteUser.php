@@ -1,5 +1,13 @@
 <?php
-session_start()
+session_start();
+include("pdo.php");
 
-$_SESSION['user']
+
+
+$stmt = $PDO->prepare("DELETE FROM Usuario WHERE idUsuario = :id");
+$stmt->bindValue(':id', $_SESSION['user']['id']);
+$stmt->execute();
+session_destroy();
+echo "Eliminado";
+
 ?>
