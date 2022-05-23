@@ -16,24 +16,24 @@ try {
 
 if (isset($_POST['siguiente'])) {
     $interest = $_POST['intereses'];
-
+    unset($_SESSION['user']);
     //inserta usuario
     $insertUsuario = "INSERT INTO usuario(nombre,apellido1,apellido2,fechaDeNacimiento,mail,nombreUsuario,userPassword)
     VALUES(:nombre,:apellido1,:apellido2,:fechaDeNacimiento,:mail,:nombreUsuario,:userPassword)";
     $insert = $dbh->prepare($insertUsuario);
     $insert->execute(array(
-        ":nombre" => $_SESSION['userToAdd']['nombre'],
-        ":apellido1" => $_SESSION['userToAdd']['apellido1'],
-        ":apellido2" => $_SESSION['userToAdd']['apellido2'],
-        ":fechaDeNacimiento" => $_SESSION['userToAdd']['fechaDeNacimiento'],
-        ":mail" => $_SESSION['userToAdd']['mail'],
-        ":nombreUsuario" => $_SESSION['userToAdd']['user'],
-        ":userPassword" => $_SESSION['userToAdd']['password']
+        ":nombre" => $_SESSION['user']['nombre'],
+        ":apellido1" => $_SESSION['user']['apellido1'],
+        ":apellido2" => $_SESSION['user']['apellido2'],
+        ":fechaDeNacimiento" => $_SESSION['user']['fechaDeNacimiento'],
+        ":mail" => $_SESSION['user']['mail'],
+        ":nombreUsuario" => $_SESSION['user']['user'],
+        ":userPassword" => $_SESSION['user']['password']
     ));
 
     //insertamos usuario_interes
     $stmtSearchUser = $dbh->prepare("SELECT idUsuario FROM usuario WHERE nombreUsuario = :nUsuario");
-    $stmtSearchUser->bindValue(":nUsuario", $_SESSION['userToAdd']['user']);
+    $stmtSearchUser->bindValue(":nUsuario", $_SESSION['user']['iduser']);
     $stmtSearchUser->execute();
     $newUser = $stmtSearchUser->fetchAll(PDO::FETCH_ASSOC);
     $idNewUser = $newUser[0]['idUsuario'];

@@ -373,3 +373,19 @@ $('.changePWD').click(function () {
         alert("No puedes dejar campos en vacío");
     }
 })
+
+$("#eliminar").click(function() {
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/EasyTravel/EasyTravelWeb/php/deleteUser.php",
+        data: "pwd=" + pwd,
+        dataType: "json",
+        success: function (respJSON) {
+
+            console.log(respJSON.userPassword);
+            console.log("Bien");
+
+
+        }
+    })
+})

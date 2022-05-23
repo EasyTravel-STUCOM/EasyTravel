@@ -18,21 +18,20 @@ $stmt->bindValue(':user', $user);
 $stmt->execute();
 $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($user);
+
 $pwdHash = $user[0]['userPassword'];
 
 
-echo("<br>");
-echo($pwd);
-echo("<br>".$pwdHash);
-echo gettype($pwd);  
-echo gettype($pwdHash);
+
 
 if (password_verify($pwd, $pwdHash)) {
-    $_SESSION['user']['name'] = $user['name'];
-    $_SESSION['user']['surname1'] = $user['apellido1'];
-    $_SESSION['user']['surname2'] = $user['apellido2'];
-    echo json_encode($user);
+    unset($_SESSION['user']);
+    $_SESSION['user']['id'] = $user[0]['idUsuario'];
+    $_SESSION['user']['name'] = $user[0]['nombre'];
+    $_SESSION['user']['surname1'] = $user[0]['apellido1'];
+    $_SESSION['user']['surname2'] = $user[0]['apellido2'];
+ 
+    echo json_encode($_SESSION['user']);
 }else{
     echo("Contraseña incorrecta");
 }
