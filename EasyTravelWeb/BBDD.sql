@@ -1,5 +1,7 @@
-CREATE DATABASE EasyTravel;
-USE EasyTravel; 
+CREATE DATABASE easytravelst2122;
+USE EasyTravelst2122;
+CREATE USER 'adminuser'@'localhost' IDENTIFIED BY 'admin123'; 
+GRANT ALL PRIVILEGES ON * . * to 'adminuser'@'localhost'; 
 CREATE TABLE Usuario(
 	idUsuario INT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
     nombre VARCHAR(20) NOT NULL,
@@ -22,13 +24,8 @@ CREATE TABLE TARJETA (
 );
 
 DROP TABLE TARJETA;
-/*CREATE USER "EasyTravel" IDENTIFIED BY "123";
-GRANT ALL ON EasyTravel TO "EasyTravel";*/
 
 
-select* from usuario;
-delete from usuario where nombre = "Afnan";
-select * from usuario; 
 CREATE TABLE Producto(
 	idProducto INT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY, 
     nombre VARCHAR(20) NOT NULL, 
@@ -136,3 +133,15 @@ CREATE TABLE Planner(
     CONSTRAINT fk_Planner_actividad FOREIGN KEY(actividad) REFERENCES Actividades(idActividad), 
     CONSTRAINT fk_Planner_viaje FOREIGN KEY(viaje) REFERENCES Viaje(idViaje) 
 ); 
+
+insert into intereses VALUES(1,"Arte","Me vale verga");
+insert into intereses VALUES(2,"Night Life","Me vale verga");
+insert into intereses VALUES(3,"Rural","Me vale verga");
+insert into intereses VALUES(4,"Tecnologia","Me vale verga");
+insert into intereses VALUES(5,"Eventos","Me vale verga");
+insert into intereses VALUES(6,"Ocio","Me vale verga");
+insert into intereses VALUES(7,"Gastronomia","Me vale verga");
+insert into intereses VALUES(8,"Naturaleza","Me vale verga");
+insert into intereses VALUES(9,"Cultura","Me vale verga");
+insert into intereses VALUES(10,"Deporte","Me vale verga");
+

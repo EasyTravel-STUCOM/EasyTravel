@@ -2,8 +2,8 @@
 session_start();
 var_dump($_SESSION);
 try {
-    $user = "root";
-    $password = "Supercarlos1";
+    $user = "adminuser";
+    $password = "admin123";
     $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
     $dbh = new PDO($dataName, $user, $password);
 } catch (PDOException $e) {
@@ -16,24 +16,27 @@ try {
 
 if (isset($_POST['siguiente'])) {
     $interest = $_POST['intereses'];
-    unset($_SESSION['user']);
     //inserta usuario
     $insertUsuario = "INSERT INTO usuario(nombre,apellido1,apellido2,fechaDeNacimiento,mail,nombreUsuario,userPassword)
     VALUES(:nombre,:apellido1,:apellido2,:fechaDeNacimiento,:mail,:nombreUsuario,:userPassword)";
     $insert = $dbh->prepare($insertUsuario);
     $insert->execute(array(
-        ":nombre" => $_SESSION['user']['nombre'],
-        ":apellido1" => $_SESSION['user']['apellido1'],
-        ":apellido2" => $_SESSION['user']['apellido2'],
-        ":fechaDeNacimiento" => $_SESSION['user']['fechaDeNacimiento'],
-        ":mail" => $_SESSION['user']['mail'],
-        ":nombreUsuario" => $_SESSION['user']['user'],
-        ":userPassword" => $_SESSION['user']['password']
+        ":nombre" => $_SESSION['userToAdd']['nombre'],
+        ":apellido1" => $_SESSION['userToAdd']['apellido1'],
+        ":apellido2" => $_SESSION['userToAdd']['apellido2'],
+        ":fechaDeNacimiento" => $_SESSION['userToAdd']['fechaDeNacimiento'],
+        ":mail" => $_SESSION['userToAdd']['mail'],
+        ":nombreUsuario" => $_SESSION['userToAdd']['user'],
+        ":userPassword" => $_SESSION['userToAdd']['password']
     ));
 
     //insertamos usuario_interes
     $stmtSearchUser = $dbh->prepare("SELECT idUsuario FROM usuario WHERE nombreUsuario = :nUsuario");
+<<<<<<< HEAD
     $stmtSearchUser->bindValue(":nUsuario", $_SESSION['user']['id']);
+=======
+    $stmtSearchUser->bindValue(":nUsuario", $_SESSION['userToAdd']['user']);
+>>>>>>> 83d0539803bfa55f201d06aa2168925000f53661
     $stmtSearchUser->execute();
     $newUser = $stmtSearchUser->fetchAll(PDO::FETCH_ASSOC);
     $idNewUser = $newUser[0]['idUsuario'];
