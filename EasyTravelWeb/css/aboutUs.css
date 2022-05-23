@@ -75,3 +75,7 @@ a{
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
 }
+
+.logo{
+    width: 50%;
+}

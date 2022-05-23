@@ -1,5 +1,43 @@
+<?php
+if (isset($_POST["send"])) {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $message = $_POST["message"];
+
+    try {
+        $user = "root";
+        $password = "Pokemon26!";
+        $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
+        $dbh = new PDO($dataName, $user, $password);
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+    $stmt = $dbh->prepare("INSERT INTO ContactUs(nombre,correo,mensaje)VALUES(:nombre, :correo, :mensaje");
+    $stmt->execute(array(
+        ":nombre" => $name,
+        ":correo"=>$email,
+        ":mensaje"=>$message
+    ));
+
+    $insert_query = "INSERT INTO ContactUs(nombre,correo,mensaje)VALUES('$name','$email','$message')";
+    $resultado = $conexion_bbd->query($insert_query);
+    if ($resultado) {
+        echo "<br>";
+        echo "Mensaje enviado";
+    } else {
+        echo "Mensaje no enviado";
+    }
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +49,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand:wght@300&family=Satisfy&display=swap" rel="stylesheet">
-    
+
 </head>
+
 <body>
     <header>
         <div class="grid-cabecera">
@@ -57,37 +96,37 @@
 
     <main>
         <div class="contenedor">
-        <div class="flex-contactUs">
-            <div class="elemento1">
-                <h1 class="nunito-20px titlesProperties">Talk with us</h1>
-                <p class="quickSand-16px">Don’t hesitate to contact us if you have any doubts!</p>
+            <div class="flex-contactUs">
+                <div class="elemento1">
+                    <h1 class="nunito-20px titlesProperties">Talk with us</h1>
+                    <p class="quickSand-16px">Don’t hesitate to contact us if you have any doubts!</p>
+                </div>
+
+                <div class="elemento">
+                    <form class="formulario" method="POST" action="contactUs.php">
+                        <fieldset>
+                            <legend class="nunito-20px">CONTACT US</legend>
+
+                            <div class="campo">
+                                <label for="name" class="quickSand-16px">Your name:</label>
+                                <input type="text" name="name" id="name" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="email" class="quickSand-16px">Your email:</label>
+                                <input type="email" name="email" id="email" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="message" class="quickSand-16px">Put here your dubt:</label>
+                                <textarea name="message" id="message" cols="30" rows="10" required></textarea>
+                            </div>
+
+                        </fieldset>
+                        <input type="submit" value="SEND" class="send nunito-20px" name="send">
+                    </form>
+                </div>
             </div>
-
-            <div class="elemento">
-                <form class="formulario">
-                    <fieldset>
-                        <legend class="nunito-20px">CONTACT US</legend>
-
-                        <div class="campo">
-                            <label for="name" class="quickSand-16px">Your name:</label>
-                            <input type="text" name="name" id="name" required>
-                        </div>
-
-                        <div class="campo">
-                            <label for="email" class="quickSand-16px">Your email:</label>
-                            <input type="number" name="email" id="email" required>
-                        </div>
-
-                        <div class="campo">
-                            <label for="message" class="quickSand-16px">Put here your dubt:</label>
-                            <textarea name="message" id="message" cols="30" rows="10" required></textarea>
-                        </div>
-
-                    </fieldset>
-                    <input type="submit" value="SEND" class="send nunito-20px" name="send">
-                </form>
-            </div>
-        </div>
         </div>
     </main>
     <footer class="site-footer">
@@ -126,4 +165,5 @@
 
     </footer>
 </body>
+
 </html>
