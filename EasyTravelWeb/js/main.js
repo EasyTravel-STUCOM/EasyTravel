@@ -24,7 +24,6 @@ $('.login').click(function () {
 $('#logIn').click(function () {
     let user = $('.userName').val();
     let pwd = $('.userPWD').val();
-    console.log(pwd);
 
 
     if (user.length != 0 && pwd.length != 0) {
@@ -34,8 +33,13 @@ $('#logIn').click(function () {
             data: "user=" + user +"&pwd=" + pwd,
             dataType: "json",
             success: function (respJSON) {
-                console.log(respJSON)
+                console.log("Hola");
+                console.log(respJSON.name);
+            },
+            error: function( jqXHR, textStatus, errorThrown ) {
+                console.log(textStatus);
             }
+
         })
     }
 

@@ -2,8 +2,8 @@
 session_start();
 var_dump($_SESSION);
 try {
-    $user = "root";
-    $password = "Supercarlos1";
+    $user = "adminuser";
+    $password = "admin123";
     $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
     $dbh = new PDO($dataName, $user, $password);
 } catch (PDOException $e) {
@@ -16,7 +16,6 @@ try {
 
 if (isset($_POST['siguiente'])) {
     $interest = $_POST['intereses'];
-
     //inserta usuario
     $insertUsuario = "INSERT INTO usuario(nombre,apellido1,apellido2,fechaDeNacimiento,mail,nombreUsuario,userPassword)
     VALUES(:nombre,:apellido1,:apellido2,:fechaDeNacimiento,:mail,:nombreUsuario,:userPassword)";
