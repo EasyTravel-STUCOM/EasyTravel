@@ -7,8 +7,8 @@ if (isset($_POST['apellido2'])) {
     $stmt->bindValue(':id', $_SESSION['user']['id']);
     $stmt->bindValue(':apellido2', $_POST['apellido2']);
     $stmt->execute();
-    $_SESSION['user']['surname2'] = $_POST['apellido2'];
-    $_SESSION['user']['changed'] = true;
+    $_SESSION['userToAdd']['surname2'] = $_POST['apellido2'];
+    $_SESSION['userToAdd']['changed'] = true;
 }
 
 if (isset($_POST['apellido1'])) {
@@ -16,8 +16,8 @@ if (isset($_POST['apellido1'])) {
     $stmt->bindValue(':id', $_SESSION['user']['id']);
     $stmt->bindValue(':apellido1', $_POST['apellido1']);
     $stmt->execute();
-    $_SESSION['user']['surname1'] = $_POST['apellido1'];
-    $_SESSION['user']['changed'] = true;
+    $_SESSION['userToAdd']['surname1'] = $_POST['apellido1'];
+    $_SESSION['userToAdd']['changed'] = true;
 }
 
 if (isset($_POST['nombre'])) {
@@ -25,8 +25,8 @@ if (isset($_POST['nombre'])) {
     $stmt->bindValue(':id', $_SESSION['user']['id']);
     $stmt->bindValue(':nombre', $_POST['nombre']);
     $stmt->execute();
-    $_SESSION['user']['name'] = $_POST['nombre'];
-    $_SESSION['user']['changed'] = true;
+    $_SESSION['userToAdd']['name'] = $_POST['nombre'];
+    $_SESSION['userToAdd']['changed'] = true;
 }
 
 if ((isset($_POST['nombre']) && isset($_POST['apellido1']))) {
@@ -40,9 +40,9 @@ if ((isset($_POST['nombre']) && isset($_POST['apellido1']))) {
     $stmt->bindValue(':apellido1', $_POST['apellido1']);
     $stmt->execute();
 
-    $_SESSION['user']['name'] = $_POST['nombre'];
-    $_SESSION['user']['surname1'] = $_POST['apellido1'];
-    $_SESSION['user']['changed'] = true;
+    $_SESSION['userToAdd']['name'] = $_POST['nombre'];
+    $_SESSION['userToAdd']['surname1'] = $_POST['apellido1'];
+    $_SESSION['userToAdd']['changed'] = true;
 }
 
 if (isset($_POST['apellido2']) && isset($_POST['nombre'])) {
@@ -56,9 +56,9 @@ if (isset($_POST['apellido2']) && isset($_POST['nombre'])) {
     $stmt->bindValue(':apellido2', $_POST['apellido2']);
     $stmt->execute();
 
-    $_SESSION['user']['name'] = $_POST['nombre'];
-    $_SESSION['user']['surname2'] = $_POST['apellido2'];
-    $_SESSION['user']['changed'] = true;
+    $_SESSION['userToAdd']['name'] = $_POST['nombre'];
+    $_SESSION['userToAdd']['surname2'] = $_POST['apellido2'];
+    $_SESSION['userToAdd']['changed'] = true;
 }
 
 if (isset($_POST['apellido2']) && isset($_POST['apellido1'])) {
@@ -71,9 +71,9 @@ if (isset($_POST['apellido2']) && isset($_POST['apellido1'])) {
     $stmt->bindValue('apellido2', $_POST['apellido2']);
     $stmt->bindValue('id', $_SESSION['user']['id']);
     $stmt->execute();
-    $_SESSION['user']['surname1'] = $_POST['apellido1'];
-    $_SESSION['user']['surname2'] = $_POST['apellido2'];
-    $_SESSION['user']['changed'] = true;
+    $_SESSION['userToAdd']['surname1'] = $_POST['apellido1'];
+    $_SESSION['userToAdd']['surname2'] = $_POST['apellido2'];
+    $_SESSION['userToAdd']['changed'] = true;
 }
 
 if (isset($_POST['apellido2']) && isset($_POST['nombre']) && isset($_POST['apellido1'])) {
@@ -92,10 +92,10 @@ if (isset($_POST['apellido2']) && isset($_POST['nombre']) && isset($_POST['apell
     $stmt->bindValue(':apellido1', $_POST['apellido1']);
     $stmt->execute();
 
-    $_SESSION['user']['name'] = $_POST['nombre'];
-    $_SESSION['user']['surname1'] = $_POST['apellido1'];
-    $_SESSION['user']['surname2'] = $_POST['apellido2'];
-    $_SESSION['user']['changed'] = true;
+    $_SESSION['userToAdd']['name'] = $_POST['nombre'];
+    $_SESSION['userToAdd']['surname1'] = $_POST['apellido1'];
+    $_SESSION['userToAdd']['surname2'] = $_POST['apellido2'];
+    $_SESSION['userToAdd']['changed'] = true;
 }
 
 echo json_encode($_SESSION['user']);

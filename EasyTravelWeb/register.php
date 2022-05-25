@@ -1,26 +1,13 @@
 <?php
-try {
-    $user = "adminuser";
-    $password = "admin123";
-    $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
-    $dbh = new PDO($dataName, $user, $password);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
+include("php/pdo.php");
 
-
-
-
-function conexion($dbh){
-    $insertar = $dbh->prepare();
-} 
 
 
 session_start();
 if (isset($_POST['nextButton'])) {
     unset($_SESSION);
     $stmtComprMail = "SELECT * FROM usuario WHERE mail = :email";
-    $compMail = $dbh->prepare($stmtComprMail);
+    $compMail = $PDO->prepare($stmtComprMail);
     $compMail->bindValue(":email", $_POST['mail']);
     $compMail->execute();
     $mails = $compMail->fetchAll(PDO::FETCH_ASSOC);

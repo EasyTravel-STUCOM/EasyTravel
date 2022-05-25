@@ -32,6 +32,9 @@ body{
 .grid-cabecera{
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 1fr ;
+    align-items: center;
+    justify-items: stretch;
+    margin-top: -5rem;
 }
 
 .login-register{
@@ -109,18 +112,13 @@ body{
 .hamburguer-menu img{
    color:  #FA7E32;
    cursor: pointer;
+   margin-left: 4rem;
 
 }
 
-.logo h1{
-    font-size: 32px;
-    font-family: 'Satisfy', cursive;
-  
-}
-
-.logo h2{
-    font-size: 28px;
-    font-family: 'Satisfy', cursive;
+.logo{
+    max-width: 60%;
+    
 }
 
 .hero{

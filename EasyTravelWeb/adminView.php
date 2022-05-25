@@ -1,14 +1,8 @@
 <?php 
-    try {
-        $user = "adminuser";
-        $password = "admin123";
-        $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
-        $dbh = new PDO($dataName, $user, $password);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
+    include("php/pdo.php");
 
-    $logInTry = $dbh->prepare("SELECT * FROM usuario;");
+
+    $logInTry = $PDO->prepare("SELECT * FROM usuario;");
     $logInTry->execute(); 
     $usuarios = $logInTry-> fetchAll(PDO::FETCH_ASSOC); 
 

@@ -1,14 +1,8 @@
 <?php 
-    try {
-        $user = "adminuser";
-        $password = "admin123";
-        $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
-        $dbh = new PDO($dataName, $user, $password);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
+    include("php/pdo.php");
 
-    $usuario = $dbh->prepare("SELECT * FROM usuario WHERE idUsuario = :getId");
+
+    $usuario = $PDO->prepare("SELECT * FROM usuario WHERE idUsuario = :getId");
     $usuario->bindValue(":getId", $_GET['id']);
     $usuario->execute(); 
     $usuarios = $usuario-> fetchAll(PDO::FETCH_ASSOC); 
@@ -27,7 +21,7 @@
         $mail = $_POST['email'];
         $nombreUsuario = $_POST['nombreUsuario'];
         $rol = $_POST['rol'];
-        $modify = $dbh->prepare("UPDATE usuario  SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, 
+        $modify = $PDO->prepare("UPDATE usuario  SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, 
         fechaDeNacimiento = :fechaDeNacimiento, telefono = :telefono, mail = :mail, nombreUsuario = :nombreUsuario, rol = :rol WHERE idUsuario = :id" ); 
         $modify->execute(array(
             ":id" => $id, 
