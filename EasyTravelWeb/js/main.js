@@ -51,7 +51,7 @@ $('#logIn').click(function () {
 
                         }
                     )
-                }else{
+                } else {
                     alert("Error en incio de sesión")
                 }
 
@@ -117,3 +117,32 @@ $('.nav-principal a').mouseenter(function () {
 
 
 
+$.ajax({
+    type: "GET",
+    url: "http://localhost/EasyTravel/EasyTravelWeb/php/indexOcultar.php",
+    dataType: "json",
+    success: function (respJSON) {
+        console.log(respJSON);
+        if (respJSON.loged == true) {
+            $(".login-register").css({ "display": "none" });
+            $(".account").mouseover(
+                function () {
+                    $(".account").css({ "cursor": "pointer" });
+                }
+            )
+            $(".account").click(
+                function () {
+                    window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/MyPage.html";
+                }
+            )
+        }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus);
+        alert("Error en incio de sesión");
+
+    }
+
+
+
+})
