@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("pdo.php");
+unset($_SESSION['userToAdd']);
 
 
 
@@ -19,14 +20,17 @@ $pwdHash = $user[0]['userPassword'];
 
 
 if (password_verify($pwd, $pwdHash)) {
-    unset($_SESSION['user']);
-    $_SESSION['user']['id'] = $user[0]['idUsuario'];
-    $_SESSION['user']['nombre'] = $user[0]['nombre'];
-    $_SESSION['user']['apellido1'] = $user[0]['apellido1'];
-    $_SESSION['user']['apellido2'] = $user[0]['apellido2'];
-    echo json_encode($_SESSION['user']);
+    $_SESSION['userToAdd']['id'] = $user[0]['idUsuario'];
+    $_SESSION['userToAdd']['nombre'] = $user[0]['nombre'];
+    $_SESSION['userToAdd']['apellido1'] = $user[0]['apellido1'];
+    $_SESSION['userToAdd']['apellido2'] = $user[0]['apellido2'];
+    $_SESSION['userToAdd']['verified'] = true;
+
+    echo json_encode($_SESSION['userToAdd']);
 }else{
-    echo("Contraseña incorrecta");
+    $_SESSION['userToAdd']['verified'] = true;
+
+    echo json_encode($_SESSION['userToAdd']);
 }
 
 

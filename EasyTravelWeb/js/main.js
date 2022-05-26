@@ -1,4 +1,3 @@
-
 $('.hero').slick({
     dots: true
 });
@@ -11,8 +10,8 @@ $('.login').click(function () {
         $('.register').hide();
         $('p').hide(); // applies display: none; to the element .panel
         $('.login-register').append(document.getElementsByClassName("log"));
-        $(".log").css({"display":"inline-block"});
-        $(".log input").css({"margin-bottom":"4px"});
+        $(".log").css({ "display": "inline-block" });
+        $(".log input").css({ "margin-bottom": "4px" });
         $('.login-register').animate({
             opacity: 1
         }), 300/*, function () {
@@ -20,7 +19,8 @@ $('.login').click(function () {
         }*/
     });
 });
-
+var loged = false;
+var nombreusuario = "";
 $('#logIn').click(function () {
     let user = $('.userName').val();
     let pwd = $('.userPWD').val();
@@ -30,20 +30,50 @@ $('#logIn').click(function () {
         $.ajax({
             type: "POST",
             url: "http://localhost/EasyTravel/EasyTravelWeb/php/login.php",
-            data: "user=" + user +"&pwd=" + pwd,
+            data: "user=" + user + "&pwd=" + pwd,
             dataType: "json",
             success: function (respJSON) {
-                console.log("Hola");
-                console.log(respJSON.name);
+
+                if (respJSON.verified) {
+                    alert("Bienvenido " + respJSON.nombre);
+                    $(".login-register").css({ "display": "none" });
+                    $(".account").mouseover(
+                        function () {
+                            $(".account").css({ "cursor": "pointer" });
+                        }
+                    )
+
+
+                    $(".account").click(
+                        function () {
+
+                            window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/MyPage.html";
+
+                        }
+                    )
+                }else{
+                    alert("Error en incio de sesión")
+                }
+
             },
-            error: function( jqXHR, textStatus, errorThrown ) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus);
+                alert("Error en incio de sesión");
+
             }
 
+
+
         })
+
+
+
+
     }
 
 })
+
+
 
 //animacion categorias
 
@@ -79,6 +109,7 @@ $('.nav-principal a').mouseenter(function () {
         }, 200)
     })
 })
+
 
 
 
