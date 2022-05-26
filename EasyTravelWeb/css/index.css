@@ -79,6 +79,8 @@ body{
     text-decoration: none;
     color: #FB8E4C;
     font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+
   
 }
 
@@ -157,7 +159,12 @@ body{
 /* fin jquery*/ 
 
 .login{
-    cursor:pointer
+    cursor:pointer;
+    border-radius: 0.5rem;
+    width: 9rem;
+    color: #B74804;
+    height: 3rem;
+    border:1px solid #FA7E32 ;
 }
 
 
@@ -314,6 +321,23 @@ body{
     display: "inline";
     position: "absolute"; 
 }
+
+#logIn{
+    display: block;
+    margin-left:65%;
+    width: 35%;
+    background-color: #FA7E32;
+    border-radius: 0.5rem;
+    color: #B74804;
+    border-color: #B74804;
+    border-style: none;
+    height:2rem;
+}
+.log{
+    text-align: right;
+
+}
+
 
 
 
