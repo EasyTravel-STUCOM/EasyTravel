@@ -34,8 +34,7 @@
             </div>
 
             <div class="logo">
-                <h1>EASY TRAVEL</h1>
-                <h2>Make your travel easy</h2>
+                <img src="img/logo easy travel.png"> 
             </div>
 
             <div class="login-register">
