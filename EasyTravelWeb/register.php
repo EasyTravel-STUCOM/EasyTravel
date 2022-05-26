@@ -1,11 +1,11 @@
 <?php
 include("php/pdo.php");
+unset($_SESSION);
 
 
 
 session_start();
 if (isset($_POST['nextButton'])) {
-    unset($_SESSION);
     $stmtComprMail = "SELECT * FROM usuario WHERE mail = :email";
     $compMail = $PDO->prepare($stmtComprMail);
     $compMail->bindValue(":email", $_POST['mail']);
