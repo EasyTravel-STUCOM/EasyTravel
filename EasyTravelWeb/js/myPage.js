@@ -394,3 +394,28 @@ $("#eliminar").click(function () {
     }
 
 })
+
+$("#cerrarSesion").mouseover(
+    function () {
+        $(".account").css({ "cursor": "pointer" });
+    }
+)
+
+$("#cerrarSesion").click(function () {
+
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost/EasyTravel/EasyTravelWeb/php/cerrarSesion.php",
+        dataType: "json",
+        success: function (respJSON) {
+
+            if (respJSON.cerrada) {
+                window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/index.php";
+            }
+
+
+        }
+    })
+
+})
