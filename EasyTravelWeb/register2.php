@@ -7,7 +7,6 @@ include("php/pdo.php");
 if (!isset($_SESSION['userToAdd'])) {
     header("Location: register.php");
 }
-var_dump($_SESSION);
 if (isset($_POST['siguiente'])) {
     $password = $_POST['confirmPassword'];
     $insert = $PDO->prepare("SELECT nombreUsuario FROM usuario WHERE nombreUsuario = :nomUsuario");
