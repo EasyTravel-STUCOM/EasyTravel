@@ -419,3 +419,14 @@ $("#cerrarSesion").click(function () {
     })
 
 })
+
+$(".encabezado_titulo").mouseover(
+    function () {
+        $(".encabezado_titulo").css({ "cursor": "pointer" });
+    }
+)
+
+$(".encabezado__titulo").click(function () {
+    window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/index.php";
+})
+
