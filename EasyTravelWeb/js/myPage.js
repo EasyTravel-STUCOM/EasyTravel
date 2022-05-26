@@ -262,7 +262,6 @@ $(".tarjeta__guardar").click(function () {
 
 
 
-
     if (isNaN(numeroINT)) {
         numberBool = false;
     } else {
@@ -307,16 +306,10 @@ $(".tarjeta__guardar").click(function () {
         $.ajax({
             type: "POST",
             url: "http://localhost/EasyTravel/EasyTravelWeb/php/ModifyCard.php",
-            data: "nombre=" + nombreT + "&cv=" + cvT + "&numero=" + numeroT + "&fecha=" + fechaT,
+            data: "name=" + nombreT + "&cv=" + cvT + "&numero=" + numeroT + "&fecha=" + fechaT,
             dataType: "json",
             success: function (respJSON) {
-                if (respJSON.changed == true) {
-                    console.log("Datos actualizados");
-                    $(".tarjeta__texto").html("Visa de " + nombreT)
-                } else {
-                    alert("Error en guardar tarjeta.");
-
-                }
+                console.log("Datos actualizados");
             }
         })
 
@@ -385,8 +378,9 @@ $("#eliminar").click(function () {
             dataType: "json",
             success: function (respJSON) {
 
-                console.log(respJSON);
+                console.log(respJSON.elimnado);
                 alert("Eliminado correctamente");
+                window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/index.php";
 
 
             }
@@ -430,3 +424,13 @@ $(".encabezado__titulo").click(function () {
     window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/index.php";
 })
 
+
+
+$.ajax({
+    type: "GET",
+    url: "http://localhost/EasyTravel/EasyTravelWeb/php/userName.php",
+    dataType: "json",
+    success: function (respJSON) {
+        $(".tarjeta__texto").html("Visa de " + respJSON.nombre)
+    }
+})
