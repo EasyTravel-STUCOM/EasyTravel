@@ -8,15 +8,15 @@ $nombre = $_POST['name'];
 $cv = $_POST['cv'];
 $fecha = $_POST['fecha'];
 $numero = $_POST['numero'];
-$stmt = $PDO->prepare("SELECT * FROM TARJETA WHERE id = :id");
+$stmt = $PDO->prepare("SELECT * FROM TARJETA WHERE idUsuario = :id");
 $stmt->bindValue(':id', $_SESSION['userToAdd']['id']);
 $stmt->execute();
 
 
 $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
-!empty($array) ? $existe = true : $existe = false;
 
-if ($existe) {
+if (!empty($array)) {
+
     $stmt = $PDO->prepare("UPDATE TARJETA SET nombre = :nombre, fecha = :fecha, cvc = :cv, numero = :numero WHERE idUsuario = :id");
     $stmt->bindValue(':numero', $numero);
     $stmt->bindValue(':cv', $cv);
