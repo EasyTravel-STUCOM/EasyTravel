@@ -23,13 +23,16 @@ if (isset($_POST['siguiente'])) {
         ":userPassword" => $_SESSION['userToAdd']['password']
     ));
 
+
+
+
     //insertamos usuario_interes
     $stmtSearchUser = $PDO->prepare("SELECT idUsuario FROM usuario WHERE nombreUsuario = :nUsuario");
     $stmtSearchUser->bindValue(":nUsuario", $_SESSION['userToAdd']['user']);
-
     $stmtSearchUser->execute();
     $newUser = $stmtSearchUser->fetchAll(PDO::FETCH_ASSOC);
     $idNewUser = $newUser[0]['idUsuario'];
+    $_SESSION['userToAdd']['id'] = $idNewUser;
 
     foreach ($interest as $i) {
         switch ($i) {
@@ -71,6 +74,8 @@ if (isset($_POST['siguiente'])) {
     }
     header("Location: index.php");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

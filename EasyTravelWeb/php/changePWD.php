@@ -1,13 +1,7 @@
 <?php
 
-try {
-    $user = "root";
-    $password = "";
-    $dbName = "mysql:host=localhost;dbname=EasyTravel";
-    $PDO = new PDO($dbName, $user, $password);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
+include("pdo.php");
+
 
 $pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
