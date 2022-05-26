@@ -40,7 +40,7 @@
 
             <div class="login-register">
                 <button class="register">
-                    <a href="register.html">Regístrate</a>
+                    <a href="register.php">Regístrate</a>
                 </button>
 
                 <p>o</p>
