@@ -3,6 +3,8 @@ session_start();
 include("pdo.php");
 $_SESSION['userToAdd']['changed'] = false;
 
+//Entra en cada una de estas opciones, y actualiza lo que sea necesario
+
 if (isset($_POST['apellido2'])) {
     $stmt = $PDO->prepare("UPDATE Usuario SET apellido2 = :apellido2 WHERE idUsuario = :id");
     $stmt->bindValue(':id', $_SESSION['userToAdd']['id']);

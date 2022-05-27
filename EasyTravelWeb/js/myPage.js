@@ -6,8 +6,10 @@ $(".guardar").click(function () {
 
     console.log(nombre);
 
+    //Ajax que detecta si hemos cambiadoalgo, una vez detectado cuales son, lo actulaizara en el php.
 
     if (nombre.length == 0 && apellido1.length == 0 && apellido2.length != 0) {
+
 
         if (isDigit(apellido2) == false) {
             $.ajax({

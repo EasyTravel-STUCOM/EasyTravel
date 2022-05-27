@@ -2,6 +2,7 @@
 session_start();
 include("pdo.php");
 
+//Esto modifica la tarjeta del usuario, recoge ewl id que es el foeign key, y luego si no tiene tarjeta la añade, sino la actualiza.
 
 
 $nombre = $_POST['name'];
