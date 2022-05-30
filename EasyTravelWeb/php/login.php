@@ -24,6 +24,7 @@ if (password_verify($pwd, $pwdHash)) {
     $_SESSION['userToAdd']['nombre'] = $user[0]['nombre'];
     $_SESSION['userToAdd']['apellido1'] = $user[0]['apellido1'];
     $_SESSION['userToAdd']['apellido2'] = $user[0]['apellido2'];
+    $_SESSION['userToAdd']['user'] = $user[0]['nombreUsuario'];
     $_SESSION['userToAdd']['verified'] = true;
 
     echo json_encode($_SESSION['userToAdd']);

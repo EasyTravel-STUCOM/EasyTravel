@@ -1,7 +1,8 @@
 create DATABASE easytravelst2122;
 USE EasyTravelst2122;
-CREATE USER 'adminuser'@'localhost' IDENTIFIED BY 'admin123'; 
+
 GRANT ALL PRIVILEGES ON * . * to 'adminuser'@'localhost'; 
+
 CREATE TABLE Usuario(
 	idUsuario INT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
     nombre VARCHAR(20) NOT NULL,
@@ -14,6 +15,7 @@ CREATE TABLE Usuario(
     userPassword VARCHAR(60) NOT NULL, 
     rol VARCHAR(10) DEFAULT('user') NOT NULL     
 ); 
+SELECT * FROM USUARIO;
 
 CREATE TABLE TARJETA (
 	idUsuario INT NOT NULL,
@@ -21,11 +23,11 @@ CREATE TABLE TARJETA (
     fecha VARCHAR(100) NOT NULL,
     cvc VARCHAR(3) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
-    CONSTRAINT pk_id PRIMARY KEY(idUsuario),
-    CONSTRAINT fk_id FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario)
+    CONSTRAINT pk_id PRIMARY KEY(idUsuario) ,
+    CONSTRAINT fk_id FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario) ON UPDATE CASCADE ON DELETE CASCADE
 );
 SELECT * FROM TARJETA;
-DROP TABLE TARJETA;
+
 
 
 CREATE TABLE Producto(
@@ -41,8 +43,8 @@ CREATE TABLE Carrito(
 	producto int NOT NULL,
     usuario int NOT NULL,
     CONSTRAINT pkCarrito PRIMARY KEY(producto, usuario), 
-    CONSTRAINT fk_carrito_producto FOREIGN KEY(producto) REFERENCES Producto(idProducto),
-    CONSTRAINT fk_carrito_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario)
+    CONSTRAINT fk_carrito_producto FOREIGN KEY(producto) REFERENCES Producto(idProducto) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_carrito_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE Logros(
@@ -57,8 +59,8 @@ CREATE TABLE logrosObtenidos(
     usuario INT NOT NULL,
     fechaObtención DATETIME NOT NULL, 
     CONSTRAINT pk_logrosObtenidos PRIMARY KEY(logro, usuario),
-    CONSTRAINT fk_logrosObtenidos_logro FOREIGN KEY(logro) REFERENCES Logros(idLogro),
-    CONSTRAINT fk_logrosObtenidos_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario)
+    CONSTRAINT fk_logrosObtenidos_logro FOREIGN KEY(logro) REFERENCES Logros(idLogro) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_logrosObtenidos_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario) ON UPDATE CASCADE ON DELETE CASCADE
 ); 
 
 
@@ -73,8 +75,8 @@ CREATE TABLE UsuarioInteres(
 	interes INT NOT NULL, 
     usuario INT NOT NULL, 
     CONSTRAINT pk_UsuarioInteres PRIMARY KEY(interes, usuario),
-    CONSTRAINT fk_UsuarioInteres_interes FOREIGN KEY(interes) REFERENCES Intereses(idInteres),
-    CONSTRAINT fk_UsuarioInteres_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario)
+    CONSTRAINT fk_UsuarioInteres_interes FOREIGN KEY(interes) REFERENCES Intereses(idInteres) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_UsuarioInteres_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario) ON UPDATE CASCADE ON DELETE CASCADE
 ); 
 
 CREATE TABLE Actividades(
@@ -89,16 +91,16 @@ CREATE TABLE ActividadesSueltas(
 	actividad INT NOT NULL, 
     usuario INT NOT NULL, 
     CONSTRAINT pk_ActividadesSueltas PRIMARY KEY(actividad,usuario), 
-    CONSTRAINT fk_ActividadesSueltas_actividad FOREIGN KEY(actividad) REFERENCES Actividades(idActividad),
-    CONSTRAINT fk_ActividadesSueltas_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario)
+    CONSTRAINT fk_ActividadesSueltas_actividad FOREIGN KEY(actividad) REFERENCES Actividades(idActividad) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_ActividadesSueltas_usuario FOREIGN KEY(usuario) REFERENCES Usuario(idUsuario) ON UPDATE CASCADE ON DELETE CASCADE
 ); 
 
 CREATE TABLE Intereses_Actividades(
 	interes INT NOT NULL,
     actividad INT NOT NULL, 
     CONSTRAINT pk_Intereses_Actividades PRIMARY KEY(interes,actividad),
-    CONSTRAINT fk_Intereses_Actividades_interes FOREIGN KEY(interes) REFERENCES Intereses(idInteres),
-    CONSTRAINT fk_Intereses_Actividades_actividad FOREIGN KEY(actividad) REFERENCES Actividades(idActividad)
+    CONSTRAINT fk_Intereses_Actividades_interes FOREIGN KEY(interes) REFERENCES Intereses(idInteres) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_Intereses_Actividades_actividad FOREIGN KEY(actividad) REFERENCES Actividades(idActividad) ON UPDATE CASCADE ON DELETE CASCADE
 ); 
 
 CREATE TABLE Estancia(
@@ -132,8 +134,8 @@ CREATE TABLE Planner(
     viaje INT NOT NULL, 
     idPlanner INT AUTO_INCREMENT UNIQUE NOT NULL, 
     CONSTRAINT pk_Planner PRIMARY KEY(actividad,viaje,idPlanner), 
-    CONSTRAINT fk_Planner_actividad FOREIGN KEY(actividad) REFERENCES Actividades(idActividad), 
-    CONSTRAINT fk_Planner_viaje FOREIGN KEY(viaje) REFERENCES Viaje(idViaje) 
+    CONSTRAINT fk_Planner_actividad FOREIGN KEY(actividad) REFERENCES Actividades(idActividad) ON UPDATE CASCADE ON DELETE CASCADE, 
+    CONSTRAINT fk_Planner_viaje FOREIGN KEY(viaje) REFERENCES Viaje(idViaje) ON UPDATE CASCADE ON DELETE CASCADE
 ); 
 
 insert into intereses VALUES(1,"Arte","Me vale verga");

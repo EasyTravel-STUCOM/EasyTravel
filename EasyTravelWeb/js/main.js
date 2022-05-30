@@ -30,12 +30,13 @@ $('#logIn').click(function () {
         //Ajax para iniciar sesión en el index, le enviamos el usuario y la contraseña, una vexz validada de que no está vacía
         $.ajax({
             type: "POST",
-            url: "http://localhost/EasyTravel/EasyTravelWeb/php/login.php",
+            url: "php/login.php",
             data: "user=" + user + "&pwd=" + pwd,
             dataType: "json",
             success: function (respJSON) {
 
                 if (respJSON.verified) {
+                    console.log(respJSON.nombre+"-"+respJSON.id);
                     alert("Bienvenido " + respJSON.nombre);
                     $(".login-register").css({ "display": "none" });
                     $(".account").mouseover(
@@ -48,7 +49,7 @@ $('#logIn').click(function () {
                     $(".account").click(
                         function () {
 
-                            window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/MyPage.html";
+                            window.location.href = "MyPage.html";
 
                         }
                     )
@@ -120,7 +121,7 @@ $('.nav-principal a').mouseenter(function () {
 
 $.ajax({
     type: "GET",
-    url: "http://localhost/EasyTravel/EasyTravelWeb/php/indexOcultar.php",
+    url: "php/indexOcultar.php",
     dataType: "json",
     success: function (respJSON) {
         console.log(respJSON);
@@ -133,7 +134,7 @@ $.ajax({
             )
             $(".account").click(
                 function () {
-                    window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/MyPage.html";
+                    window.location.href = "MyPage.html";
                 }
             )
         }
