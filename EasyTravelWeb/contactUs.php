@@ -1,12 +1,6 @@
 <?php
- try {
-    $user = "root";
-    $password = "Pokemon26!";
-    $dataName = "mysql:host=localhost; port = 3306; dbname=easytravelst2122";
-    $dbh = new PDO($dataName, $user, $password);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
+include("php/pdo.php");
+
 
 if (isset($_POST["send"])) {
     $name = $_POST["name"];
@@ -15,7 +9,7 @@ if (isset($_POST["send"])) {
 
    
     $insert_query= "INSERT INTO contactUs VALUES(:nombre,:correo,:mensaje)";
-    $stmt = $dbh->prepare($insert_query);
+    $stmt = $PDO->prepare($insert_query);
     $stmt->execute(array(
         ":nombre" =>$name,
         ":correo"=>$email,
@@ -83,11 +77,11 @@ if (isset($_POST["send"])) {
 
     <div class="contenedor-nav">
         <nav class="nav-principal">
-            <a href="">Home</a>
+            <a href="index.php">Home</a>
             <a href="">Planificador</a>
             <a href="">Organiza tu viaje</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
+            <a href="aboutUs.html">About Us</a>
+            <a href="contactUs.php">Contact Us</a>
         </nav>
     </div>
 

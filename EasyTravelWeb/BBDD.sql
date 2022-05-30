@@ -134,6 +134,12 @@ CREATE TABLE Planner(
     CONSTRAINT fk_Planner_viaje FOREIGN KEY(viaje) REFERENCES Viaje(idViaje) 
 ); 
 
+CREATE TABLE ContactUs(
+    nombre VARCHAR(50) NOT NULL, 
+    correo VARCHAR(100) NOT NULL, 
+    mensaje VARCHAR(500) NOT NULL
+);
+
 insert into intereses VALUES(1,"Arte","Me vale verga");
 insert into intereses VALUES(2,"Night Life","Me vale verga");
 insert into intereses VALUES(3,"Rural","Me vale verga");

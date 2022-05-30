@@ -59,11 +59,11 @@
 
     <div class="contenedor-nav">
         <nav class="nav-principal">
-            <a href="">Inicio</a>
+            <a href="index.php">Inicio</a>
             <a href="">Planificador</a>
             <a href="">Organiza tu viaje</a>
-            <a href="">Merchandising</a>
-            <a href="">Packs</a>
+            <a href="aboutUs.html">About us</a>
+            <a href="contactUs.php">Packs</a>
         </nav>
     </div>
 

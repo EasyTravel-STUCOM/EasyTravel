@@ -43,29 +43,23 @@
 
 <?php
 
+include("php/pdo.php");
+
+
 if (isset($_POST["enviar"])) {
     $nombre = $_POST["nombre"];
     $precio = $_POST["precio"];
     $duracion = $_POST["duracion"];
     $descripcion = $_POST["descripcion"];
-    try {
-        $user = "root";
-        $password = "Pokemon26!";
-        $dataName = "mysql:host=localhost;dbname=easytravelst2122";
-
-        $conexion_bbd = new PDO($dataName, $user, $password); //creamos la conexion
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
     
-        $comprobacion = $conexion_bbd->prepare( "SELECT * FROM easytravelst2122.actividades WHERE nombre = :nombre");  //preparem la consulta
+        $comprobacion = $PDO->prepare( "SELECT * FROM easytravelst2122.actividades WHERE nombre = :nombre");  //preparem la consulta
         $comprobacion->bindValue(":nombre",$nombre); 
         $comprobacion->execute(); 
         $comprobacion = $comprobacion->fetchAll(PDO::FETCH_ASSOC); //obtenim els resultats com un array assoc
 
         if (empty($comprobacion)) {
             $insert_query = "INSERT INTO easytravelst2122.actividades(nombre,descripcion,precio,duracionEstimada)VALUES('$nombre','$descripcion','$precio','$duracion')";
-            $resultado = $conexion_bbd->query($insert_query);
+            $resultado = $PDO->query($insert_query);
             if ($resultado) {
                 echo "<br>";
                 echo "ACTIVIDAD REGISTRADA";

@@ -119,7 +119,7 @@ $('.nav-principal a').mouseenter(function () {
 
 $.ajax({
     type: "GET",
-    url: "http://localhost/EasyTravel/EasyTravelWeb/php/indexOcultar.php",
+    url: "http://localhost:3000/EasyTravelWeb/php/indexOcultar.php",
     dataType: "json",
     success: function (respJSON) {
         console.log(respJSON);
