@@ -1,4 +1,4 @@
-create DATABASE easytravelst2122;
+CREATE DATABASE easytravelst2122;
 USE EasyTravelst2122;
 CREATE USER 'adminuser'@'localhost' IDENTIFIED BY 'admin123'; 
 GRANT ALL PRIVILEGES ON * . * to 'adminuser'@'localhost'; 
@@ -24,9 +24,6 @@ CREATE TABLE TARJETA (
     CONSTRAINT pk_id PRIMARY KEY(idUsuario),
     CONSTRAINT fk_id FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario)
 );
-SELECT * FROM TARJETA;
-DROP TABLE TARJETA;
-
 
 CREATE TABLE Producto(
 	idProducto INT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY, 
