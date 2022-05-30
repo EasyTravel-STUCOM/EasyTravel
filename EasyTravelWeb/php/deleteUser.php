@@ -6,7 +6,6 @@ include("pdo.php");
 
 $stmt = $PDO->prepare("DELETE FROM Usuario WHERE nombreUsuario = :user");
 $stmt->bindValue(':user', $_SESSION['userToAdd']['user']);
-echo $_SESSION['userToAdd']['user'];
 $stmt->execute();
 session_destroy();
 $eliminado['user']['eliminado'] =  true;
