@@ -16,13 +16,15 @@ CREATE TABLE Usuario(
 ); 
 
 CREATE TABLE TARJETA (
-	numero VARCHAR(16) PRIMARY KEY,
+	idUsuario INT NOT NULL,
+	numero VARCHAR(16) NOT NULL,
     fecha VARCHAR(100) NOT NULL,
     cvc VARCHAR(3) NOT NULL,
-    nombre VARCHAR(100) NOT NULL
-    
+    nombre VARCHAR(100) NOT NULL,
+    CONSTRAINT pk_id PRIMARY KEY(idUsuario),
+    CONSTRAINT fk_id FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario)
 );
-
+SELECT * FROM TARJETA;
 DROP TABLE TARJETA;
 
 

@@ -27,6 +27,7 @@ $('#logIn').click(function () {
 
 
     if (user.length != 0 && pwd.length != 0) {
+        //Ajax para iniciar sesión en el index, le enviamos el usuario y la contraseña, una vexz validada de que no está vacía
         $.ajax({
             type: "POST",
             url: "http://localhost/EasyTravel/EasyTravelWeb/php/login.php",
@@ -115,7 +116,7 @@ $('.nav-principal a').mouseenter(function () {
 
 
 
-
+//AJAX genérico para ver si existe o no un usaurio activo en la sesión, si existe desaparecerá el div de log.
 
 $.ajax({
     type: "GET",

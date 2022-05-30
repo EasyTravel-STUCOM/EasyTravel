@@ -2,12 +2,12 @@
 session_start();
 include("pdo.php");
 
-
+//Elimina usuario
 
 $stmt = $PDO->prepare("DELETE FROM Usuario WHERE idUsuario = :id");
-$stmt->bindValue(':id', $_SESSION['user']['id']);
+$stmt->bindValue(':id', $_SESSION['userToAdd']['id']);
 $stmt->execute();
 session_destroy();
-echo "Eliminado";
-
+$eliminado['user']['eliminado'] =  true;
+echo json_encode($eliminado['user']);
 ?>

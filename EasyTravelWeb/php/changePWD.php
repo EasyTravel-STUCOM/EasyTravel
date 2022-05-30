@@ -2,6 +2,7 @@
 
 include("pdo.php");
 
+//Hace cambio de contraseña
 
 $pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
