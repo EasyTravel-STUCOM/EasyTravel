@@ -14,7 +14,7 @@ $(".guardar").click(function () {
         if (isDigit(apellido2) == false) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/EasyTravel/EasyTravelWeb/php/ChangeNameAndSurname.php",
+                url: "php/ChangeNameAndSurname.php",
                 data: "apellido2=" + apellido2,
                 dataType: "json",
                 success: function (respJSON) {
@@ -36,7 +36,7 @@ $(".guardar").click(function () {
         if (isDigit(nombre) == false) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/EasyTravel/EasyTravelWeb/php/ChangeNameAndSurname.php",
+                url: "php/ChangeNameAndSurname.php",
                 data: "nombre=" + nombre,
                 dataType: "json",
                 success: function (respJSON) {
@@ -58,7 +58,7 @@ $(".guardar").click(function () {
         if (isDigit(apellido1) == false) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/EasyTravel/EasyTravelWeb/php/ChangeNameAndSurname.php",
+                url: "php/ChangeNameAndSurname.php",
                 data: "apellido1=" + apellido1,
                 dataType: "json",
                 success: function (respJSON) {
@@ -79,7 +79,7 @@ $(".guardar").click(function () {
         if (isDigit(apellido1) == false && isDigit(apellido2) == false) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/EasyTravel/EasyTravelWeb/php/ChangeNameAndSurname.php",
+                url: "php/ChangeNameAndSurname.php",
                 data: "apellido1=" + apellido1 + "&apellido2=" + apellido2,
                 dataType: "json",
                 success: function (respJSON) {
@@ -106,7 +106,7 @@ $(".guardar").click(function () {
         if (isDigit(apellido1) == false && isDigit(apellido2) == false && isDigit(nombre) == false) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/EasyTravel/EasyTravelWeb/php/ChangeNameAndSurname.php",
+                url: "php/ChangeNameAndSurname.php",
                 data: "nombre=" + nombre + "&apellido1=" + apellido1 + "&apellido2=" + apellido2,
                 dataType: "json",
                 success: function (respJSON) {
@@ -138,7 +138,7 @@ $(".guardar").click(function () {
         if (isDigit(apellido1) == false && isDigit(nombre) == false) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/EasyTravel/EasyTravelWeb/php/ChangeNameAndSurname.php",
+                url: "php/ChangeNameAndSurname.php",
                 data: "nombre=" + nombre + "&apellido1=" + apellido1,
                 dataType: "json",
                 success: function (respJSON) {
@@ -164,7 +164,7 @@ $(".guardar").click(function () {
         if (isDigit(apellido2) == false && isDigit(nombre) == false) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/EasyTravel/EasyTravelWeb/php/ChangeNameAndSurname.php",
+                url: "php/ChangeNameAndSurname.php",
                 data: "nombre=" + nombre + "&apellido2=" + apellido2,
                 dataType: "json",
                 success: function (respJSON) {
@@ -307,7 +307,7 @@ $(".tarjeta__guardar").click(function () {
     } else {
         $.ajax({
             type: "POST",
-            url: "http://localhost/EasyTravel/EasyTravelWeb/php/ModifyCard.php",
+            url: "php/ModifyCard.php",
             data: "name=" + nombreT + "&cv=" + cvT + "&numero=" + numeroT + "&fecha=" + fechaT,
             dataType: "json",
             success: function (respJSON) {
@@ -347,7 +347,7 @@ $('.changePWD').click(function () {
     if (pwd == pwdConfirm && pwd.length != 0 && pwdConfirm.length != 0) {
         $.ajax({
             type: "POST",
-            url: "http://localhost/EasyTravel/EasyTravelWeb/php/changePWD.php",
+            url: "php/changePWD.php",
             data: "pwd=" + pwd,
             dataType: "json",
             success: function (respJSON) {
@@ -376,13 +376,13 @@ $("#eliminar").click(function () {
 
         $.ajax({
             type: "GET",
-            url: "http://localhost/EasyTravel/EasyTravelWeb/php/deleteUser.php",
+            url: "php/deleteUser.php",
             dataType: "json",
             success: function (respJSON) {
 
                 console.log(respJSON.elimnado);
                 alert("Eliminado correctamente");
-                window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/index.php";
+                window.location.href = "index.php";
 
 
             }
@@ -402,12 +402,12 @@ $("#cerrarSesion").click(function () {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost/EasyTravel/EasyTravelWeb/php/cerrarSesion.php",
+        url: "php/cerrarSesion.php",
         dataType: "json",
         success: function (respJSON) {
 
             if (respJSON.cerrada) {
-                window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/index.php";
+                window.location.href = "index.php";
             }
 
 
@@ -423,16 +423,17 @@ $(".encabezado_titulo").mouseover(
 )
 
 $(".encabezado__titulo").click(function () {
-    window.location.href = "http://localhost/EasyTravel/EasyTravelWeb/index.php";
+    window.location.href = "index.php";
 })
 
 
 
 $.ajax({
     type: "GET",
-    url: "http://localhost/EasyTravel/EasyTravelWeb/php/userName.php",
+    url: "php/userName.php",
     dataType: "json",
     success: function (respJSON) {
+        console.log(respJSON.nombre+"-"+respJSON.id);
         $(".tarjeta__texto").html("Visa de " + respJSON.nombre)
     }
 })
