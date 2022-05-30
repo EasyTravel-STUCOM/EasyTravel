@@ -369,6 +369,8 @@ $('.changePWD').click(function () {
     }
 })
 
+
+//Elimina la cuenta, sale un prompt para confirmar
 $("#eliminar").click(function () {
     let confirmar = confirm("Estás seguro de querer eliminar la cuenta?");
 
@@ -397,6 +399,8 @@ $("#cerrarSesion").mouseover(
     }
 )
 
+
+//Cierra sesión
 $("#cerrarSesion").click(function () {
 
 
@@ -427,7 +431,7 @@ $(".encabezado__titulo").click(function () {
 })
 
 
-
+//Para poner el nombre de la tarjeta
 $.ajax({
     type: "GET",
     url: "php/userName.php",
@@ -435,5 +439,18 @@ $.ajax({
     success: function (respJSON) {
         console.log(respJSON.nombre+"-"+respJSON.id);
         $(".tarjeta__texto").html("Visa de " + respJSON.nombre)
+    }
+})
+
+
+//Si abrimos directamente el account settings sin loguearnos nos redirigirá al index.
+$.ajax({
+    type: "GET",
+    url: "php/indexOcultar.php",
+    dataType: "json",
+    success: function (respJSON) {
+        if (!respJSON.loged) {
+            window.location.href = "index.php"
+        }
     }
 })
